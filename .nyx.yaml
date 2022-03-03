@@ -1,18 +1,177 @@
 ---
-preset: extended
-  services:
-    GITHUB:
-      options:
-        AUTHENTICATION_TOKEN: "{{#environment.variable}}GH_TOKEN{{/environment.variable}}"
-        REPOSITORY_NAME: https://github.com/truthencode/djaxonomy
-        REPOSITORY_OWNER: truthencode
-  releaseTypes:
-    publicationServices:
-      - GITHUB
+changelog:
+  path: "CHANGELOG.md"
+  substitutions:
+    "(?m)#([0-9]+)(?s)": "[#%s](https://github.com/truthencode/djaxonomy/issues/%s)"
+commitMessageConventions:
+  enabled:
+    - conventionalCommits
+    - gitmoji
+  items:
+    conventionalCommits:
+      expression: "(?m)^(?<type>[a-zA-Z0-9_]+)(!)?(\\((?<scope>[a-z ]+)\\))?:( (?<title>.+))$(?s).*"
+      bumpExpressions:
+        major: "(?s)(?m)^[a-zA-Z0-9_]+(!|.*^(BREAKING( |-)CHANGE: )).*"
+        minor: "(?s)(?m)^feat(?!!|.*^(BREAKING( |-)CHANGE: )).*"
+        patch: "(?s)(?m)^fix(?!!|.*^(BREAKING( |-)CHANGE: )).*"
+configurationFile: ".nyx.yaml"
+dryRun: false
+git:
+  remotes:
+    origin:
+      user: jdoe
+      password: somepassword
+    replica:
+      user: stiger
+      password: somesecret
+initialVersion: "0.1.0"
+preset: "extended"
+releaseLenient: true
+releasePrefix: v
+releaseTypes:
+  enabled:
+    - mainline
+    - maturity
+    - integration
+    - hotfix
+    - feature
+    - release
+    - maintenance
+    - internal
+  publicationServices:
+    - github
+  remoteRepositories:
+    - origin
+    - replica
+  items:
     mainline:
-      description: Current primary 'master / develop' branch
+      description: "{{#file.content}}CHANGELOG.md{{/file.content}}"
+      collapseVersions: false
+      filterTags: "^()?([0-9]\\d*)\\.([0-9]\\d*)\\.([0-9]\\d*)$"
+      gitCommit: "false"
+      gitCommitMessage: "Release version "
+      gitPush: "true"
+      gitTag: "true"
+      gitTagMessage: "Tag version "
+      matchBranches: ^(master|main)$
+      matchEnvironmentVariables:
+        CI: "^true$"
+      matchWorkspaceStatus: "CLEAN"
+      publish: "true"
+      versionRangeFromBranchName: false
+    maturity:
       collapseVersions: true
-      collapseVersionQualifier: {{branch}}
-      # TODO: gitCommit conditional boolean variable
-
+      collapsedVersionQualifier: ""
+      description: "Maturity release "
+      filterTags: "^()?([0-9]\\d*)\\.([0-9]\\d*)\\.([0-9]\\d*)(-(alpha|beta|gamma|delta|epsilon|zeta|eta|theta|iota|kappa|lambda|mu|nu|xi|omicron|pi|rho|sigma|tau|upsilon|phi|chi|psi|omega)(\\.([0-9]\\d*))?)?$"
+      gitCommit: "false"
+      gitPush: "true"
+      gitTag: "true"
+      matchBranches: "^(alpha|beta|gamma|delta|epsilon|zeta|eta|theta|iota|kappa|lambda|mu|nu|xi|omicron|pi|rho|sigma|tau|upsilon|phi|chi|psi|omega)$"
+      matchWorkspaceStatus: "CLEAN"
+      publish: "true"
+      versionRangeFromBranchName: false
+    integration:
+      collapseVersions: true
+      collapsedVersionQualifier: ""
+      description: "Integration release "
+      filterTags: "^()?([0-9]\\d*)\\.([0-9]\\d*)\\.([0-9]\\d*)(-(develop|development|integration|latest)(\\.([0-9]\\d*))?)$"
+      gitCommit: "false"
+      gitPush: "true"
+      gitTag: "true"
+      matchBranches: "^(develop|development|integration|latest)$"
+      matchWorkspaceStatus: "CLEAN"
+      publish: "true"
+      versionRangeFromBranchName: false
+    hotfix:
+      collapseVersions: true
+      collapsedVersionQualifier: ""
+      description: "Hotfix release "
+      filterTags: "^()?([0-9]\\d*)\\.([0-9]\\d*)\\.([0-9]\\d*)(-(fix|hotfix)(([0-9a-zA-Z]*)(\\.([0-9]\\d*))?)?)$"
+      gitCommit: "false"
+      gitPush: "true"
+      gitTag: "true"
+      matchBranches: "^(fix|hotfix)((-|\\/)[0-9a-zA-Z-_]+)?$"
+      matchWorkspaceStatus: "CLEAN"
+      publish: "true"
+      versionRangeFromBranchName: false
+    feature:
+      collapseVersions: true
+      collapsedVersionQualifier: ""
+      description: "Feature release "
+      filterTags: "^()?([0-9]\\d*)\\.([0-9]\\d*)\\.([0-9]\\d*)(-(feat|feature)(([0-9a-zA-Z]*)(\\.([0-9]\\d*))?)?)$"
+      gitCommit: "false"
+      gitPush: "false"
+      gitTag: "false"
+      matchBranches: "^(feat|feature)((-|\\/)[0-9a-zA-Z-_]+)?$"
+      publish: "false"
+      versionRangeFromBranchName: false
+    release:
+      collapseVersions: true
+      collapsedVersionQualifier: ""
+      description: "Release "
+      filterTags: "^()?([0-9]\\d*)\\.([0-9]\\d*)\\.([0-9]\\d*)(-(rel|release)((\\.([0-9]\\d*))?)?)$"
+      gitCommit: "false"
+      gitPush: "true"
+      gitTag: "true"
+      matchBranches: "^(rel|release)(-|\\/)()?([0-9|x]\\d*)(\\.([0-9|x]\\d*)(\\.([0-9|x]\\d*))?)?$"
+      matchWorkspaceStatus: "CLEAN"
+      publish: "false"
+      versionRangeFromBranchName: true
+    maintenance:
+      collapseVersions: false
+      description: "Maintenance release "
+      filterTags: "^()?([0-9]\\d*)\\.([0-9]\\d*)\\.([0-9]\\d*)$"
+      gitCommit: "false"
+      gitPush: "true"
+      gitTag: "true"
+      matchBranches: "^[a-zA-Z]*([0-9|x]\\d*)(\\.([0-9|x]\\d*)(\\.([0-9|x]\\d*))?)?$"
+      matchWorkspaceStatus: "CLEAN"
+      publish: "true"
+      versionRangeFromBranchName: true
+    internal:
+      collapseVersions: true
+      collapsedVersionQualifier: "internal"
+      description: "Internal release "
+      gitCommit: "false"
+      gitPush: "false"
+      gitTag: "false"
+      identifiers:
+        -
+          position: BUILD
+          qualifier: branch
+          value: ""
+        -
+          position: BUILD
+          qualifier: commit
+          value: ""
+        -
+          position: BUILD
+          qualifier: timestamp
+          value: ""
+        -
+          position: BUILD
+          qualifier: user
+          value: ""
+      publish: "false"
+      versionRangeFromBranchName: false
+resume: true
+scheme: SEMVER
+services:
+  github:
+    type: "GITHUB"
+    options:
+      AUTHENTICATION_TOKEN: "{{#environment.variable}}GH_TOKEN{{/environment.variable}}"
+      REPOSITORY_NAME: https://github.com/truthencode/djaxonomy
+      REPOSITORY_OWNER: truthencode
+  gitlab:
+    type: "GITLAB"
+    options:
+      AUTHENTICATION_TOKEN: "abcde-a1b2c3d4e5f6g7h8i9j0"
+      REPOSITORY_NAME: "myrepo"
+      REPOSITORY_OWNER: "acme"
+#sharedConfigurationFile: "example-shared.config.json"
+#stateFile: ".nyx-state.yml"
+verbosity: INFO
+version: "0.1.0"
 
