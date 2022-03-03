@@ -461,3 +461,5 @@ gradle-app.setting
 # JDT-specific (Eclipse Java Development Tools)
 
 # End of https://www.toptal.com/developers/gitignore/api/java,maven,scala,gradle,kotlin,eclipse,intellij+all,openframeworks+visualstudio,node
+
+**/generated/
