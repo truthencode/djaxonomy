@@ -1,0 +1,65 @@
+version: "3.8"
+services:
+   # infinispan: # quarkus clustering
+   #    image: quay.io/infinispan/server:13.0
+   #    # command: -cli IDENTITIES_BATCH="/user-config/identities.batch"
+   #    ports:
+   #       - 11222:11222
+   #    volumes:
+   #       - ./user-config:/user-config
+   #    environment:
+   #       IDENTITIES_BATCH: "/user-config/identities.batch"
+   eureka:
+      image: truthencode/eureka-simple:latest
+      build:
+         context: ./coffee-eureka-server
+         dockerfile: src/main/docker/Dockerfile
+      ports:
+         - 8761:8761
+   # eureka:
+   #    image: vyneco/eureka:${VYNE_VERSION}
+   #    ports:
+   #       - 8761:8761
+   vyne:
+      # image: vyneco/vyne:0.19.0
+      image: vyneco/vyne:${VYNE_VERSION} 
+      ports:
+         - 5701-5705
+         - 9022:9022
+      environment:
+         PROFILE: inmemory-query-history
+         OPTIONS: --vyne.schema.publicationMethod=DISTRIBUTED --eureka.uri=http://eureka:8761
+
+   file-schema-server:
+      image: vyneco/file-schema-server:${VYNE_VERSION}
+      depends_on:
+         - eureka
+      ports:
+         - 5701-5705
+      volumes:
+         - ${TAXONOMY_HOME}:/var/lib/vyne/schemas
+      environment:
+         OPTIONS: --taxi.schema-local-storage=/var/lib/vyne/schemas --eureka.uri=http://eureka:8761 --vyne.schema.publicationMethod=DISTRIBUTED
+
+   cask:
+      image: vyneco/cask:${VYNE_VERSION}
+      depends_on:
+         - eureka
+      environment:
+         PROFILE: local
+         OPTIONS: --eureka.uri=http://eureka:8761 --vyne.schema.publicationMethod=DISTRIBUTED
+      ports:
+         - 5701-5705
+         - 15432:5432
+         - 8800:8800
+   pipelines-orchestrator:
+      image: vyneco/pipelines-orchestrator:${VYNE_VERSION}
+      depends_on:
+         - eureka
+      ports:
+         - 5701-5705
+         - 9600:9600
+      environment:
+         PROFILE: local
+         OPTIONS: --eureka.uri=http://eureka:8761
+         JVM_OPTS: -Xmx1024m

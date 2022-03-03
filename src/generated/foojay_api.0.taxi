@@ -1,0 +1,193 @@
+namespace io.truthencode.taxi {
+   type Object
+   
+   @ServiceDiscoveryClient(serviceName = "foojay_discoapi")
+   service DiscoV2_0Service {
+      [[ Returns a list of endpoints of Disco API v2.0 ]]
+      @HttpOperation(method = "GET" , url = "https://api.foojay.io/disco/v2.0")
+      operation v2(  ) : Object
+   }
+   @ServiceDiscoveryClient(serviceName = "foojay_discoapi")
+   service DiscoV2_0DistributionsService {
+      [[ Returns a list of all supported distributions ]]
+      @HttpOperation(method = "GET" , url = "/disco/v2.0/distributions")
+      operation getDistributionsV2(  include_versions : Boolean,  include_synonyms : Boolean,  discovery_scope_id : String[] ) : Object
+   }
+   @ServiceDiscoveryClient(serviceName = "foojay_discoapi")
+   service DiscoV2_0DistributionsVersionsVersionService {
+      [[ Returns a list of all distributions that support the given java version ]]
+      @HttpOperation(method = "GET" , url = "/disco/v2.0/distributions/versions/{version}")
+      operation getDistributionsForGivenVersionV2( @PathVariable(value = "version") version : String,  discovery_scope_id : String[],  match : String ) : Object
+   }
+   @ServiceDiscoveryClient(serviceName = "foojay_discoapi")
+   service DiscoV2_0DistributionsDistro_nameService {
+      [[ Returns detailled information about a given distribution ]]
+      @HttpOperation(method = "GET" , url = "/disco/v2.0/distributions/{distro_name}")
+      operation getDistributionV2( @PathVariable(value = "distro_name") distro_name : String,  latest_per_update : Boolean,  discovery_scope_id : String[],  match : String ) : Object
+   }
+   @ServiceDiscoveryClient(serviceName = "foojay_discoapi")
+   service DiscoV2_0Ephemeral_idsEphemeral_idService {
+      [[ Return the information about a package defined by the given ephemeral_id ]]
+      @HttpOperation(method = "GET" , url = "/disco/v2.0/ephemeral_ids/{ephemeral_id}")
+      operation getPackgeInfoV2( @PathVariable(value = "ephemeral_id") ephemeral_id : String,  token : String ) : Object
+   }
+   @ServiceDiscoveryClient(serviceName = "foojay_discoapi")
+   service DiscoV2_0Ephemeral_idsEphemeral_idRedirectService {
+      [[ Redirects to either the direct download link or the download site of the requested package defined by it's ephemeral id ]]
+      @HttpOperation(method = "GET" , url = "/disco/v2.0/ephemeral_ids/{ephemeral_id}/redirect")
+      operation getPackageRedirectV2( @PathVariable(value = "ephemeral_id") ephemeral_id : String ) : Object
+   }
+   @ServiceDiscoveryClient(serviceName = "foojay_discoapi")
+   service DiscoV2_0Major_versionsService {
+      [[ Return a list of major versions defined by the given parameters ]]
+      @HttpOperation(method = "GET" , url = "/disco/v2.0/major_versions")
+      operation getAllMajorVersionsV2(  ea : Boolean,  ga : Boolean,  maintained : Boolean,  include_build : Boolean,  discovery_scope_id : String[],  match : String,  include_versions : Boolean ) : Object
+   }
+   @ServiceDiscoveryClient(serviceName = "foojay_discoapi")
+   service DiscoV2_0Major_versionsMajor_versionEaService {
+      [[ Returns the specified major version including early access builds ]]
+      @HttpOperation(method = "GET" , url = "/disco/v2.0/major_versions/{major_version}/ea")
+      operation getSpecificMajorVersionIncludingEaV2( @PathVariable(value = "major_version") major_version : Int,  include_build : Boolean ) : Object
+   }
+   @ServiceDiscoveryClient(serviceName = "foojay_discoapi")
+   service DiscoV2_0Major_versionsMajor_versionGaService {
+      [[ Returns the specified major version excluding early access builds ]]
+      @HttpOperation(method = "GET" , url = "/disco/v2.0/major_versions/{major_version}/ga")
+      operation getSpecificMajorVersionV2( @PathVariable(value = "major_version") major_version : Int,  include_build : Boolean ) : Object
+   }
+   @ServiceDiscoveryClient(serviceName = "foojay_discoapi")
+   service DiscoV2_0Major_versionsQueryService {
+      [[ Returns information about the requested major version ]]
+      @HttpOperation(method = "GET" , url = "/disco/v2.0/major_versions/{query}")
+      operation getMajorVersionV2( @PathVariable(value = "query") `query` : String,  include_build : Boolean ) : Object
+   }
+   @ServiceDiscoveryClient(serviceName = "foojay_discoapi")
+   service DiscoV2_0PackagesService {
+      [[ Returns a list of packages defined by the given parameters
+      The version parameter not only supports different formats for version numbers (e.g. 11.9.0.1, 1.8.0_262, 15, 16-ea) but
+      also ranges (e.g. 15.0.1.. includes VersionNumber1 and VersionNumber2
+      VersionNumber1.. includes VersionNumber1 and excludes VersionNumber2
+      VersionNumber1..VersionNUmber2 = excludes VersionNumber1 and includes VersionNumber2
+      VersionNumber1. excludes VersionNumber1 and VersionNumber2 ]]
+      @HttpOperation(method = "GET" , url = "/disco/v2.0/packages")
+      operation getPackagesV2(  version : String,  version_by_definition : String,  distro : String[],  architecture : String[],  archive_type : String[],  package_type : String,  operating_system : String[],  libc_type : String[],  release_status : String[],  term_of_support : String[],  bitness : Int,  fpu : String[],  javafx_bundled : Boolean,  with_javafx_if_available : Boolean,  directly_downloadable : Boolean,  latest : String,  feature : String[],  signature_available : Boolean,  free_to_use_in_production : Boolean,  discovery_scope_id : String[],  match : String ) : Object
+   }
+   @ServiceDiscoveryClient(serviceName = "foojay_discoapi")
+   service DiscoV2_0PackagesAllService {
+      [[ Returns all pacakges defined the downloadable and include_ea parameter ]]
+      @HttpOperation(method = "GET" , url = "/disco/v2.0/packages/all")
+      operation getAllPackagesV2(  downloadable : Boolean,  include_ea : Boolean ) : Object
+   }
+   @ServiceDiscoveryClient(serviceName = "foojay_discoapi")
+   service DiscoV2_0PackagesAll_builds_of_graalvmService {
+      [[ Returns all packages that are builds of GraalVM ]]
+      @HttpOperation(method = "GET" , url = "/disco/v2.0/packages/all_builds_of_graalvm")
+      operation getAllPackagesGraalVMV2(  downloadable : Boolean,  include_ea : Boolean ) : Object
+   }
+   @ServiceDiscoveryClient(serviceName = "foojay_discoapi")
+   service DiscoV2_0PackagesAll_builds_of_openjdkService {
+      [[ Returns all packages that are builds of OpenJDK ]]
+      @HttpOperation(method = "GET" , url = "/disco/v2.0/packages/all_builds_of_openjdk")
+      operation getAllPackagesOpenJDKV2(  downloadable : Boolean,  include_ea : Boolean ) : Object
+   }
+   @ServiceDiscoveryClient(serviceName = "foojay_discoapi")
+   service DiscoV2_0PackagesJdksService {
+      [[ Returns a list of packages that are of package_type JDK defined by the given parameters.
+      The version parameter not only supports different formats for version numbers (e.g. 11.9.0.1, 1.8.0_262, 15, 16-ea) but
+      also ranges (e.g. 15.0.1.. includes VersionNumber1 and VersionNumber2
+      VersionNumber1.. includes VersionNumber1 and excludes VersionNumber2
+      VersionNumber1..VersionNUmber2 = excludes VersionNumber1 and includes VersionNumber2
+      VersionNumber1. excludes VersionNumber1 and VersionNumber2 ]]
+      @HttpOperation(method = "GET" , url = "/disco/v2.0/packages/jdks")
+      operation getJDKPackagesV2(  version : String,  distro : String[],  architecture : String[],  fpu : String[],  archive_type : String[],  operating_system : String[],  libc_type : String[],  release_status : String[],  javafx_bundled : Boolean,  with_javafx_if_available : Boolean,  latest : String,  signature_available : Boolean,  free_to_use_in_production : Boolean,  match : String ) : Object
+   }
+   @ServiceDiscoveryClient(serviceName = "foojay_discoapi")
+   service DiscoV2_0PackagesJresService {
+      [[ Returns a list of packages that are of package_type JRE defined by the given parameters.
+      The version parameter not only supports different formats for version numbers (e.g. 11.9.0.1, 1.8.0_262, 15, 16-ea) but
+      also ranges (e.g. 15.0.1.. includes VersionNumber1 and VersionNumber2
+      VersionNumber1.. includes VersionNumber1 and excludes VersionNumber2
+      VersionNumber1..VersionNUmber2 = excludes VersionNumber1 and includes VersionNumber2
+      VersionNumber1. excludes VersionNumber1 and VersionNumber2 ]]
+      @HttpOperation(method = "GET" , url = "/disco/v2.0/packages/jres")
+      operation getJREPackagesV2(  version : String,  distro : String[],  architecture : String[],  fpu : String[],  archive_type : String[],  operating_system : String[],  libc_type : String[],  release_status : String[],  javafx_bundled : Boolean,  with_javafx_if_available : Boolean,  latest : String,  signature_available : Boolean,  match : String ) : Object
+   }
+   @ServiceDiscoveryClient(serviceName = "foojay_discoapi")
+   service DiscoV2_0PackagesYamlService {
+      [[ Returns the packages defined by the given yaml_uri and scope_name ]]
+      @HttpOperation(method = "GET" , url = "/disco/v2.0/packages/yaml")
+      operation getPackagesByYamlV2(  yaml_uri : String,  scope_name : String ) : Object
+   }
+   @ServiceDiscoveryClient(serviceName = "foojay_discoapi")
+   service DiscoV2_0PackagesIdService {
+      [[ Returns information about a package defined by the given package id ]]
+      @HttpOperation(method = "GET" , url = "/disco/v2.0/packages/{id}")
+      operation getPackageV2( @PathVariable(value = "id") id : String ) : Object
+   }
+   @ServiceDiscoveryClient(serviceName = "foojay_discoapi")
+   service DiscoV2_0ParametersService {
+      [[ Returns a list of parameters and their possible values which are used in the Disco API ]]
+      @HttpOperation(method = "GET" , url = "/disco/v2.0/parameters")
+      operation getParametersV2(  ) : Object
+   }
+   @ServiceDiscoveryClient(serviceName = "foojay_discoapi")
+   service DiscoV2_0Supported_architecturesService {
+      [[ Returns the supported architectures with their bitness etc. ]]
+      @HttpOperation(method = "GET" , url = "/disco/v2.0/supported_architectures")
+      operation getSupportedArchitectures(  ) : Object
+   }
+   @ServiceDiscoveryClient(serviceName = "foojay_discoapi")
+   service DiscoV2_0Supported_archive_typesService {
+      [[ Returns the supported archive types ]]
+      @HttpOperation(method = "GET" , url = "/disco/v2.0/supported_archive_types")
+      operation getSupportedArchiveTypes(  ) : Object
+   }
+   @ServiceDiscoveryClient(serviceName = "foojay_discoapi")
+   service DiscoV2_0Supported_featuresService {
+      [[ Returns the supported features ]]
+      @HttpOperation(method = "GET" , url = "/disco/v2.0/supported_features")
+      operation getSupportedFeatures(  ) : Object
+   }
+   @ServiceDiscoveryClient(serviceName = "foojay_discoapi")
+   service DiscoV2_0Supported_fpusService {
+      [[ Returns the supported floating point types ]]
+      @HttpOperation(method = "GET" , url = "/disco/v2.0/supported_fpus")
+      operation getSupportedFpus(  ) : Object
+   }
+   @ServiceDiscoveryClient(serviceName = "foojay_discoapi")
+   service DiscoV2_0Supported_latest_parametersService {
+      [[ Returns the supported latest parameters ]]
+      @HttpOperation(method = "GET" , url = "/disco/v2.0/supported_latest_parameters")
+      operation getSupportedLatestParameters(  ) : Object
+   }
+   @ServiceDiscoveryClient(serviceName = "foojay_discoapi")
+   service DiscoV2_0Supported_lib_c_typesService {
+      [[ Returns the supported libc types ]]
+      @HttpOperation(method = "GET" , url = "/disco/v2.0/supported_lib_c_types")
+      operation getSupportedLibCTypes(  ) : Object
+   }
+   @ServiceDiscoveryClient(serviceName = "foojay_discoapi")
+   service DiscoV2_0Supported_operating_systemsService {
+      [[ Returns the supported operating systems with their libc type ]]
+      @HttpOperation(method = "GET" , url = "/disco/v2.0/supported_operating_systems")
+      operation getSupportedOperatingSystems(  ) : Object
+   }
+   @ServiceDiscoveryClient(serviceName = "foojay_discoapi")
+   service DiscoV2_0Supported_package_typesService {
+      [[ Returns the supported package types ]]
+      @HttpOperation(method = "GET" , url = "/disco/v2.0/supported_package_types")
+      operation getSupportedPackageTypes(  ) : Object
+   }
+   @ServiceDiscoveryClient(serviceName = "foojay_discoapi")
+   service DiscoV2_0Supported_release_statusService {
+      [[ Returns the supported release status ]]
+      @HttpOperation(method = "GET" , url = "/disco/v2.0/supported_release_status")
+      operation getSupportedReleaseStatus(  ) : Object
+   }
+   @ServiceDiscoveryClient(serviceName = "foojay_discoapi")
+   service DiscoV2_0Supported_terms_of_supportService {
+      [[ Returns the supported terms of support ]]
+      @HttpOperation(method = "GET" , url = "/disco/v2.0/supported_terms_of_support")
+      operation getSupportedTermsOfSupport(  ) : Object
+   }
+}

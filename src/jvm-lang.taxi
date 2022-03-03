@@ -1,0 +1,13 @@
+namespace io.truthencode.taxi.jvm {
+    [[Base Language Identifier such as 'Java']]
+    enum LanguageId {
+        Java,
+        Scala,
+        Kotlin,
+        Ruby,
+        Python,
+        [[Unknown or unsupported language]]
+        default UNSUPPORTED
+    }
+
+}

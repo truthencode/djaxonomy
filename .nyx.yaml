@@ -1,0 +1,18 @@
+---
+preset: extended
+  services:
+    GITHUB:
+      options:
+        AUTHENTICATION_TOKEN: "{{#environment.variable}}GH_TOKEN{{/environment.variable}}"
+        REPOSITORY_NAME: https://github.com/truthencode/djaxonomy
+        REPOSITORY_OWNER: truthencode
+  releaseTypes:
+    publicationServices:
+      - GITHUB
+    mainline:
+      description: Current primary 'master / develop' branch
+      collapseVersions: true
+      collapseVersionQualifier: {{branch}}
+      # TODO: gitCommit conditional boolean variable
+
+

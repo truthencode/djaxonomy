@@ -1,0 +1,52 @@
+namespace io.truthencode.taxi.jvm {
+    type Language inherits String
+    
+    [[program such as Bazel or Pants that can build, compile, test and generally perform tasks to turn code into a package or executable program or application]]
+    type BuildTool inherits String
+    
+    [[Continous Integration server such as Travis.ci, Jenkins which can automate builds]]
+    type ContinousIntegrationServer inherits String
+    
+    [[A target enviroment or virtual environment which programs will execute on.
+    This can be in a general sense (JVM, JS(Web), Native) or potentially in a more specific form do to architecture et al]]
+    type Platform inherits String
+    
+    [[A framework usually consists of a set of tools, conventions, specification and integrations to support a standard or simplify implementation of a particular language or technology.
+    Examples include Spring, Quarkus, Akka, Flink]]
+    type Framework inherits String
+    
+    [[A package manager can generally download, install, and update packages from a remote or local source.
+    Some are more general to a particular platform such as Chocolatey, scoop, Homebrew, and others are tailored to a specific language or technology]]
+    type PackageManager inherits String
+    
+    [[A version manager is a specific type of package manager which generally installs and maintains multiple versions of a particular language, framework or technology.
+    Examples include NVM (Node), RBEnv (Ruby), Conda (Python) and SDKMan which supports several languages (Java, Scala, Kotlin)
+    along with their respective tools and some framework CLI tools like Vert.x, Quarkus and Ki]]
+    type VersionManager inherits PackageManager
+    
+    [[A repository hosts packages in a particular format for some technology.
+    These serve as a publishing target as well as a resource provider.
+    Examples include NuGet, MavenCentral and JitPack for JVM based modules, Gradle Plugin Portal for Gradle build tool plugins, Docker Hub for Docker images etc.]]
+    type Repository inherits String
+    
+    [[A command line utility which can be executed in a terminal environment and generally scripted.
+    Many frameworks and tools include a CLI or provide a separate install]]
+    type CLI inherits String
+    
+    [[Used by BuildTools and frameworks to declare library and resource dependencies with versions.
+    Some, such as Maven, SBT, Coursier, Apache Ivy or Gradle and also retrieve them from local or remote repositories and generally resolve dependency versions.]]
+    type DependencyManager inherits String
+    
+    [[A dependency is a resource, generally a library which is required for a particular program to run or build.
+    A dependency MAY support multiple notations and formats as well as version ranges depending on the context of the application.]]
+    type Dependency inherits String
+    
+    [[A package is a collection of one or more artifacts usually versioned and published as a compelete unit.
+    Packaging may include the process of adding descriptors for various Packagemanagers or launch environments
+    such as JBang, Homebrew, Snapcraft etc via a DeploymentTool such as JReleaser]]
+    type Package inherits String
+    
+    [[A descriptor in generally added to an artifact or annotated as metadata for a target environment or release.
+    This should not be used directly, but implemented based on case.  i.e. an OSGI manifest, OPENApi doc, Homebrew meta, Java Module or automaatic-module-name manifest entry ]]
+    type Descriptor inherits String
+}

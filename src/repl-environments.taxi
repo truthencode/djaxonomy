@@ -1,0 +1,13 @@
+namespace io.truthencode.taxi.jvm {
+    [[A context where a program can be used]]
+    type RuntimeEnvironment inherits String
+
+    [[Read, Evaluate, Print and Loop
+    Generally a CLI program for a particular language that allows you to execute code files and snippets without the need to set up the environment or create a full project.
+    Basic REPL support is generally available for most JVM languages such as Scala and Kotlin simply by typing 'scala' or 'kotlin' in a terminal.
+    Some languages provide more advanced tooling such as Ki, Ammonite with enable importing additional libraries]]
+    type REPL inherits String
+
+    [[Deployment tooling such as JReleaser]]
+    type DeploymentTool inherits String
+}

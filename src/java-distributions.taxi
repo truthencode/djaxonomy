@@ -1,0 +1,37 @@
+namespace io.truthencode.taxi.jvm.java {
+    enum Scope {
+        PUBLIC("public"),
+        OPEN_JDK_BUILD("build_of_open_jdk"),
+        DIRECT_DOWNLOAD("directly_downloadable")
+        
+    }
+    
+    [[Alternate name for a distribution]]
+    type Synonym inherits String
+    
+    [[The case-sensitive name of the java Distribution]]
+    type DistroNames inherits String
+    
+    [[The case-sensitive name of the java Distribution, UPPERCASE]]
+    type DistributionName inherits DistroNames
+    
+    [[The case-sensitive name of the distribution for API, lowercase]]
+    type APIName inherits DistroNames
+    
+    [[The case-sensitive name of the distribution for the user interface, ProperCase]]
+    type UIName inherits DistroNames
+    
+    [[Boolean value whether the distribution is maintained]]
+    type Maintained inherits Boolean
+    
+    [[A java distribution per foojay.io]]
+    model Distribution {
+        name: DistributionName
+        api: APIName
+        ui: UIName
+        synonyms: Array<Synonym>
+        scopes: Array<Scope>
+        maintained: Maintained
+    }
+    
+}
