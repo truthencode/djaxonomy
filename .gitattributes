@@ -4,6 +4,9 @@
 # These are explicitly windows files and should use crlf
 *.bat           text eol=crlf
 
+# These are explicitly unix-ish files and should use lf
+gradlew         text eol=lf
+
 # Java sources
 *.java          text diff=java
 *.kt            text diff=java
