@@ -1,4 +1,4 @@
-namespace io.truthencode.taxi.jvm {
+namespace io.truthencode.taxi.language {
     enum LanguageFamily {
         JVM,
         Ruby,

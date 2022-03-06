@@ -24,6 +24,7 @@ import kotlin.test.assertTrue
 class JavaDistributionTest {
     @Test
     fun someLibraryMethodReturnsTrue() {
+        // data from https://api.foojay.io/disco/v2.0/distributions
         val mapper = jacksonObjectMapper()
         this.javaClass.getResourceAsStream("/java-distributions.json").use { inputStream ->
             val results = mapper.readTree(inputStream)

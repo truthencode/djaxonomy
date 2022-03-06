@@ -1,0 +1,41 @@
+import io.truthencode.taxi.version.VersionExpression
+
+namespace io.truthencode.taxi.dependencies {
+    [[A dependency is a resource, generally a library which is required for a particular program to run or build.
+    A dependency MAY support multiple notations and formats as well as version ranges depending on the context of the application.]]
+    type Dependency inherits String
+    
+    [[Defines the required or allowed environments of a given dependency.  The implementation is specific to the build tool.
+    Base examples include the following: Compile vs Runtime, Optional or provided vs required, Test vs Production.]]
+    type DependencyScope inherits String
+    
+    [[Implementation specific. In Maven context, this determines a POM vs a Jar / War packaging type.]]
+    type DependencyType inherits String
+    
+    [[Textual representation of a dependency.  In its simplest form, it may follow a GAV such as "myorg:myartifact:1.0.0"
+    More advanced expressions may be expressed via implementation specific script or markup to denote scope, version requirements, ranges, exclusions etc]]
+    type DependencyExpression inherits String
+    
+    type alias DependencyNotation as DependencyExpression
+    
+    [[In certain contexts, this represents a general namespace, group owner or organization that is associated with a given artifact.  i.e. Apache or Google or org.taxilang]]
+    type GroupIdentifier inherits String
+    
+    [[specifies the artifact ID such as 'junit-jupiter-api' or a ruby Gem 'colorize']]
+    type ArtifactIdentifier inherits String
+    
+    model MavenDependency {
+        [[Within a POM, this may be omitted and calculated from the Parent POM, BOM, Dependency Management or Dependency Management of a Parent POM]]
+        groupId : GroupIdentifier
+        artifactId : ArtifactIdentifier
+        [[Within a POM, this may be omitted and calculated from the Parent POM, BOM, Dependency Management or Dependency Management of a Parent POM]]
+        version : VersionExpression
+        [[Scope defaults to compile when no value is provided, 'import' scope is only valid with DependencyType = 'POM']]
+        scope: DependencyScope?
+        dependencyType : DependencyType
+        exclusions: Array<MavenDependency>?
+    }
+    
+    
+    
+}

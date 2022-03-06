@@ -1,0 +1,19 @@
+namespace io.truthencode.taxi.version {
+    [[A version or chronological evolution of a given language, artifact or application, usually in the form of Major, Minor, and Build]]
+    type Version inherits String
+    
+    [[A version expression represents a specific version or range of versions]]
+    type VersionExpression inherits String
+
+    [[Typically reflects large, major changes or additional features or capabilities which may not be compatible with previous versions]]
+    type MajorVersion inherits Int
+    
+    [[Typically reflect incremental additions or changes which are generally not 'Breaking changes' to previous versions]]
+    type MinorVersion inherits Int
+    
+    [[Generally specific to the impllementation, this is the smallest change which could be based on a nightly build, a small patch, maturity,
+    or other criteria and is generally made up of a number plus some optional identifier such as 'Snapshot' or 'RC1']]
+    type BuildVersion inherits String
+
+    
+}

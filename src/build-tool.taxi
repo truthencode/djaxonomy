@@ -1,0 +1,23 @@
+namespace io.truthencode.taxi.buildtools {
+    [[Used by BuildTools and frameworks to declare library and resource dependencies with versions.
+    Some, such as Maven, SBT, Coursier, Apache Ivy or Gradle and also retrieve them from local or remote repositories and generally resolve dependency versions.]]
+    type DependencyManager inherits String
+    
+    enum BuildTool {
+        [[XML based build tool for JVM languages]]
+        Maven,
+        [[JVM build tool scripted with Kotlin or Groovy]]
+        Gradle,
+        [[scala based Build tool primarily for scala]]
+        SBT,
+        [[Build tool for Closure]]
+        Leiningen,
+        [[Ruby based JVM build tool]]
+        Buildr,
+        [[scala based build tool for Java / Scala]]
+        Mill,
+        [[Python based Pants2 build tool for Python, Go, Java, Scala, Shell, Docker...]]
+        Pants
+    }
+
+}

@@ -1,4 +1,4 @@
-namespace io.truthencode.taxi.jvm {
+namespace io.truthencode.taxi.environment {
     [[A context where a program can be used]]
     type RuntimeEnvironment inherits String
 

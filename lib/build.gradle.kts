@@ -38,6 +38,9 @@ dependencies {
     // This dependency is exported to consumers, that is to say found on their compile classpath.
     api("org.apache.commons:commons-math3:3.6.1")
     implementation("org.taxilang:taxi-annotations:$taxiVersion")
+    implementation("org.taxilang:taxi-cli:$taxiVersion")
+    implementation("org.taxilang:java2taxi:$taxiVersion")
+    
 
     testImplementation(enforcedPlatform("com.fasterxml.jackson:jackson-bom:2.13.1"))
     testImplementation("com.fasterxml.jackson.module:jackson-module-parameter-names")

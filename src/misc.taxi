@@ -1,4 +1,4 @@
-namespace io.truthencode.taxi.jvm {
+namespace io.truthencode.taxi.other {
     type Language inherits String
     
     [[program such as Bazel or Pants that can build, compile, test and generally perform tasks to turn code into a package or executable program or application]]
@@ -32,15 +32,7 @@ namespace io.truthencode.taxi.jvm {
     [[A command line utility which can be executed in a terminal environment and generally scripted.
     Many frameworks and tools include a CLI or provide a separate install]]
     type CLI inherits String
-    
-    [[Used by BuildTools and frameworks to declare library and resource dependencies with versions.
-    Some, such as Maven, SBT, Coursier, Apache Ivy or Gradle and also retrieve them from local or remote repositories and generally resolve dependency versions.]]
-    type DependencyManager inherits String
-    
-    [[A dependency is a resource, generally a library which is required for a particular program to run or build.
-    A dependency MAY support multiple notations and formats as well as version ranges depending on the context of the application.]]
-    type Dependency inherits String
-    
+       
     [[A package is a collection of one or more artifacts usually versioned and published as a compelete unit.
     Packaging may include the process of adding descriptors for various Packagemanagers or launch environments
     such as JBang, Homebrew, Snapcraft etc via a DeploymentTool such as JReleaser]]
