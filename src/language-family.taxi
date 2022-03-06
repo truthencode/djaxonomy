@@ -1,0 +1,10 @@
+namespace io.truthencode.taxi.jvm {
+    enum LanguageFamily {
+        JVM,
+        Ruby,
+        PHP,
+        Rust,
+        GO,
+        Python
+    }
+}
