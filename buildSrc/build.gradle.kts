@@ -37,7 +37,7 @@ dependencies {
     implementation("com.diffplug.spotless:spotless-plugin-gradle:6.3.0")
 //    implementation("com.diffplug.spotless-changelog:spotless-changelog-plugin-gradle:2.4.0")
     implementation("org.jlleitschuh.gradle:ktlint-gradle:$ktlintPluginVersion")
-    implementation("com.javiersc.gradle-plugins:dependency-updates:0.1.0-rc.40")
+    implementation("com.javiersc.gradle-plugins:dependency-updates:0.1.0-rc.45")
 
     compileOnly("org.jetbrains.kotlin:kotlin-reflect:1.7.22") {
         version {
