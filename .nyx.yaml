@@ -46,7 +46,7 @@ releaseTypes:
   items:
     mainline:
       description: "{{#file.content}}CHANGELOG.md{{/file.content}}"
-      collapseVersions: false
+      collapseVersions: true
       filterTags: "^()?([0-9]\\d*)\\.([0-9]\\d*)\\.([0-9]\\d*)$"
       gitCommit: "false"
       gitCommitMessage: "Release version "
