@@ -1,7 +1,7 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2022 Andre White.
+ * Copyright 2022-2023 Andre White.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
  */
 plugins {
     id("org.kordamp.gradle.project")
-    id("com.mooltiverse.oss.nyx")
+//    id("com.mooltiverse.oss.nyx")
 }
 // general project information
 val projectName = project.name
@@ -83,6 +83,7 @@ config {
         enabled = true
     }
 }
+
 
 subprojects {
     version = rootProject.version

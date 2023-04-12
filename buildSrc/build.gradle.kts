@@ -1,7 +1,7 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2022 Andre White.
+ * Copyright 2022-2023 Andre White.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 plugins {
     // Support convention plugins written in Kotlin. Convention plugins are build scripts in 'src/main' that automatically become available as plugins in the main build.
     `kotlin-dsl`
@@ -39,11 +38,6 @@ dependencies {
     implementation("org.jlleitschuh.gradle:ktlint-gradle:$ktlintPluginVersion")
     implementation("com.javiersc.gradle-plugins:dependency-updates:0.1.0-rc.40")
 
-    compileOnly("org.jetbrains.kotlin:kotlin-reflect:1.6.10") {
-        version {
-            strictly("1.6.10")
-        }
-    }
 }
 // TODO: pull from properties and transliterate to Kotlin-DSL
 // val kotlin_version = "1.6.10"

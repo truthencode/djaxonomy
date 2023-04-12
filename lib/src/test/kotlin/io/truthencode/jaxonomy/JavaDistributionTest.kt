@@ -1,7 +1,7 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2022 Andre White.
+ * Copyright 2022-2023 Andre White.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,22 +18,24 @@
 package io.truthencode.jaxonomy
 
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
-import kotlin.test.Test
-import kotlin.test.assertTrue
+import io.kotest.core.spec.style.DescribeSpec
+import io.kotest.matchers.collections.shouldNotBeEmpty
 
-class JavaDistributionTest {
-    @Test
-    fun someLibraryMethodReturnsTrue() {
-        // data from https://api.foojay.io/disco/v2.0/distributions
-        val mapper = jacksonObjectMapper()
-        this.javaClass.getResourceAsStream("/java-distributions.json").use { inputStream ->
-            val results = mapper.readTree(inputStream)
-            assertTrue(!results.isEmpty)
-            for (rslt in results) {
-                System.out.println(rslt.toPrettyString())
-                // FIXME: Requires type mapper from WebService -> Distribution object
-                // val dists: List<Distribution> = mapper.readValue(rslt.toString())
+class JavaDistributionTest : DescribeSpec({
+    describe("The local json distribution library") {
+        it("should contain data") {
+            // data from https://api.foojay.io/disco/v2.0/distributions
+            val mapper = jacksonObjectMapper()
+            this.javaClass.getResourceAsStream("/java-distributions.json").use { inputStream ->
+                val results = mapper.readTree(inputStream)
+                results.shouldNotBeEmpty()
+
+                for (rslt in results) {
+                    System.out.println(rslt.toPrettyString())
+                    // FIXME: Requires type mapper from WebService -> Distribution object
+                    // val dists: List<Distribution> = mapper.readValue(rslt.toString())
+                }
             }
         }
     }
-}
+})
