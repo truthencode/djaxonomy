@@ -11,9 +11,9 @@ services:
    #       IDENTITIES_BATCH: "/user-config/identities.batch"
    eureka:
       image: truthencode/eureka-simple:latest
-      build:
-         context: ./coffee-eureka-server
-         dockerfile: src/main/docker/Dockerfile
+      # build:
+      #    context: ./coffee-eureka-server
+      #    dockerfile: src/main/docker/Dockerfile
       ports:
          - 8761:8761
    # eureka:
@@ -30,16 +30,21 @@ services:
          PROFILE: inmemory-query-history
          OPTIONS: --vyne.schema.publicationMethod=DISTRIBUTED --eureka.uri=http://eureka:8761
 
-   file-schema-server:
-      image: vyneco/file-schema-server:${VYNE_VERSION}
+   schema-server:
+      image: vyneco/schema-server:${VYNE_VERSION}
       depends_on:
          - eureka
       ports:
          - 5701-5705
       volumes:
-         - ${TAXONOMY_HOME}:/var/lib/vyne/schemas
+         - ${SCHEMA_PATH:-./vyne/schema-server}:/var/lib/vyne/schema-server
       environment:
-         OPTIONS: --taxi.schema-local-storage=/var/lib/vyne/schemas --eureka.uri=http://eureka:8761 --vyne.schema.publicationMethod=DISTRIBUTED
+          OPTIONS: >-
+            --server.port=80          
+            --eureka.uri=http://eureka
+            --eureka.instance.preferIpAddress=true
+            --vyne.repositories.config-file=/var/lib/vyne/schema-server/schema-server.conf
+         # OPTIONS: --taxi.schema-local-storage=/var/lib/vyne/schemas --eureka.uri=http://eureka:8761 --vyne.schema.publicationMethod=DISTRIBUTED
 
    cask:
       image: vyneco/cask:${VYNE_VERSION}
