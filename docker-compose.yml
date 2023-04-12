@@ -1,0 +1,59 @@
+## This file stands up an Orbital instance and Schema server
+##
+##
+## It's configured to use RSocket for distribution
+## The Schema Server will deploy a single file-based schema, which by default
+## watches the directory where this docker-compose file is deployed.
+##
+## A typical workflow for this file is:
+## taxi init
+## taxi vyne
+##
+## The following variables can be set in a .env file:
+##
+## ORBITAL_VERSION (default: latest)
+## SCHEMA_PATH (default: current directory .)
+
+version: "3.3"
+services:
+   orbital:
+      image: orbitalhq/orbital:${ORBITAL_VERSION:-latest}
+      environment:
+         OPTIONS: >-
+            --vyne.analytics.mode=InProcess
+            --vyne.analytics.persistRemoteCallResponses=true
+            --vyne.analytics.persistResults=true
+      expose:
+         - 9022
+      ports:
+         - "9022:9022"
+      volumes:
+         - ~/.orbital/license:/opt/var/orbital/license
+         - ./orbital/config:/opt/service/config
+      deploy:
+         resources:
+            limits:
+               memory: 600mb
+
+   schema-server:
+      image: orbitalhq/schema-server:${ORBITAL_VERSION:-latest}
+      volumes:
+         - ${SCHEMA_PATH:-.}:/var/lib/orbital/schema-server
+      environment:
+         OPTIONS: >-
+            --server.port=80
+            --vyne.repositories.repository-path=/var/lib/vyne/schema-server
+            ## --vyne.repositories.config-file=/var/lib/vyne/schema-server/schema-server.conf
+            --eureka.uri=http://eureka
+            --eureka.instance.preferIpAddress=true
+      deploy:
+         resources:
+            limits:
+               memory: 600mb
+
+      expose:
+         - 7655
+         - 9305
+      ports:
+         - "7655:7655"
+         - "9305:9305"
