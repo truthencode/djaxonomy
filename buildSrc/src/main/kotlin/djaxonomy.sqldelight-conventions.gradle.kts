@@ -16,29 +16,5 @@
  * limitations under the License.
  */
 plugins {
-    java
-    id("djaxonomy.common-conventions")
+     id("app.cash.sqldelight")
 }
-
-val defaultJavaToolChainVersion: String by project
-val jacocoToolVersion: String by project
-val javaToolchainVersion = provider {
-    defaultJavaToolChainVersion.toInt()
-}
-//val defaultJavaToolchainVersion = provider {
-//    javaToolchains.launcherFor {
-//        languageVersion.set(JavaLanguageVersion.of(defaultJavaToolChainVersion))
-//    }
-//
-//}
-
-java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(javaToolchainVersion.get()))
-    }
-}
-
-// jacoco {
-//     toolVersion = jacocoToolVersion
-// //    reportsDirectory.set(layout.buildDirectory.dir("customJacocoReportDir"))
-// }

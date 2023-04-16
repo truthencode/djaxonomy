@@ -48,19 +48,23 @@ pluginManagement {
     val kordampGradlePluginVersion: String by settings
     val mooltiverseNyxPluginVersion: String by settings
     val foojayResolverPluginVersionversion: String by settings
+    val palantirPluginVersion: String by settings
 
     plugins {
-        id("org.kordamp.gradle.project") version kordampGradlePluginVersion
-        id("org.kordamp.gradle.jar") version kordampGradlePluginVersion
-        id("org.kordamp.gradle.minpom") version kordampGradlePluginVersion
+//        id("org.kordamp.gradle.project") version kordampGradlePluginVersion
+//        id("org.kordamp.gradle.jar") version kordampGradlePluginVersion
+//        id("org.kordamp.gradle.minpom") version kordampGradlePluginVersion
         id("com.mooltiverse.oss.nyx") version mooltiverseNyxPluginVersion
         id("org.gradle.toolchains.foojay-resolver-convention") version foojayResolverPluginVersionversion
+        id("com.palantir.baseline") version palantirPluginVersion
+id("com.palantir.baseline-config") version palantirPluginVersion
+        id("org.inferred.processors") version "3.7.0"
     }
 }
 
 plugins {
     id("com.mooltiverse.oss.nyx")
-    id("org.gradle.toolchains.foojay-resolver-convention")
+   id("org.gradle.toolchains.foojay-resolver-convention")
 }
 
 // Not needed as we're using the .nyx.yaml for configuration
@@ -75,4 +79,4 @@ plugins {
 
 
 rootProject.name = "jaxonomy"
-include("lib", "utilities", "list", "app")
+include("lib", "utilities", "list", "app","dto","etl")

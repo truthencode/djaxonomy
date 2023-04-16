@@ -16,8 +16,16 @@
  * limitations under the License.
  */
 plugins {
-    id("org.kordamp.gradle.project")
-//    id("com.mooltiverse.oss.nyx")
+    // id("org.kordamp.gradle.project")
+    java
+    // id("com.palantir.baseline")
+    id("com.palantir.baseline-config")
+    id("com.palantir.baseline-exact-dependencies")
+    id("org.inferred.processors")
+}
+
+repositories {
+    mavenCentral()
 }
 // general project information
 val projectName = project.name
@@ -33,56 +41,64 @@ group = "io.truthencode"
 // val releaseActive: Boolean? = rootProject.findProperty("release") as Boolean?
 
 val project_description: String by project
+val jacocoToolVersion: String by project
 
-config {
-//    release = if (releaseActive != null) releaseActive!! else false
-    info {
-        name = "DJAXonomy"
-        vendor = "TruthEncode"
-        description = project_description
-        inceptionYear = "2022"
-        tags = listOf("taxonomy", "dependency")
-//        version = VersionInfo().version
+// config {
+// //    release = if (releaseActive != null) releaseActive!! else false
+//     info {
+//         name = "DJAXonomy"
+//         vendor = "TruthEncode"
+//         description = project_description
+//         inceptionYear = "2022"
+//         tags = listOf("taxonomy", "dependency")
+// //        version = VersionInfo().version
 
-        links {
-            website = gitHubBaseSite
-            issueTracker = siteIssueTracker
-            scm = siteScm
-        }
+//         links {
+//             website = gitHubBaseSite
+//             issueTracker = siteIssueTracker
+//             scm = siteScm
+//         }
 
-        scm {
-            url = gitHubBaseSite
-            developerConnection = "scm:git:git@github.com:$gitHubAccountName/$gitExtension"
-            connection = "scm:git:git://github.com/github.com/$gitHubAccountName/$gitExtension"
-        }
+//         scm {
+//             url = gitHubBaseSite
+//             developerConnection = "scm:git:git@github.com:$gitHubAccountName/$gitExtension"
+//             connection = "scm:git:git://github.com/github.com/$gitHubAccountName/$gitExtension"
+//         }
 
-        organization {
-            name = "TruthEncode"
-            url = "https://github.com/truthencode"
-        }
+//         organization {
+//             name = "TruthEncode"
+//             url = "https://github.com/truthencode"
+//         }
 
-        people {
-            person {
-                id = "adarro"
-                name = "Andre White"
-                roles = listOf("developer", "owner")
-            }
-        }
-    }
+//         people {
+//             person {
+//                 id = "adarro"
+//                 name = "Andre White"
+//                 roles = listOf("developer", "owner")
+//             }
+//         }
+//     }
 
-    licensing {
+//     coverage {
+//         jacoco {
+//             enabled = false
+//             toolVersion = jacocoToolVersion
+//         }
+//     }
 
-        licenses {
-            license {
-                id = "Apache-2.0" // org.kordamp.gradle.plugin.base.model.LicenseId.APACHE_2_0
-                url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
-            }
-        }
-    }
-    buildInfo {
-        enabled = true
-    }
-}
+//     licensing {
+
+//         licenses {
+//             license {
+//                 id = "Apache-2.0" // org.kordamp.gradle.plugin.base.model.LicenseId.APACHE_2_0
+//                 url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
+//             }
+//         }
+//     }
+//     buildInfo {
+//         enabled = false
+//     }
+// }
 
 
 subprojects {

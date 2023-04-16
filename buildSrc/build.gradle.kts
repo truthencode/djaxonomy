@@ -23,11 +23,14 @@ plugins {
 repositories {
     // Use the plugin portal to apply community plugins in convention plugins.
     gradlePluginPortal()
+    mavenCentral()
 }
 
 val quarkusPlatformVersion: String by project
 val jandexPluginVersion: String by project
 val ktlintPluginVersion: String by project
+val kotlinPluginVersion: String by project
+val palantirPluginVersion: String by project
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin")
@@ -37,6 +40,18 @@ dependencies {
 //    implementation("com.diffplug.spotless-changelog:spotless-changelog-plugin-gradle:2.4.0")
     implementation("org.jlleitschuh.gradle:ktlint-gradle:$ktlintPluginVersion")
     implementation("com.javiersc.gradle-plugins:dependency-updates:0.1.0-rc.40")
+    //  id("app.cash.sqldelight") version "2.0.0-alpha05"
+    implementation("app.cash.sqldelight:gradle-plugin:2.0.0-alpha05")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinPluginVersion")
+    // implementation("com.palantir.baseline:com.palantir.gradle-baseline-config:$palantirPluginVersion")
+    // classpath for  id("com.palantir.baseline")
+    implementation("com.palantir.baseline:gradle-baseline-java:$palantirPluginVersion")
+        // implementation("com.palantir.baseline:com.palantir.baseline-reproducibility:$palantirPluginVersion")
+//    implementation("com.palantir.baseline:gradle-baseline-java:$palantirPluginVersion")
+
+    // implementation("app.cash.sqldelight:runtime-jvm:2.0.0-alpha05")
+
+
 
 }
 // TODO: pull from properties and transliterate to Kotlin-DSL

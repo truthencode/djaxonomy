@@ -1,0 +1,13 @@
+-- See https://docs.gradle.org/8.0/userguide/compatibility.html#java
+CREATE TABLE IF NOT EXISTS GradleKotlinCompat  (
+    GradleVersion TEXT PRIMARY KEY,
+    KotlinEmbed TEXT NOT NULL,
+    KotlinVersion TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS GradleJavaCompat (
+    JavaMajorVersion INTEGER PRIMARY KEY,
+    MinGradleVersion TEXT NOT NULL
+);
+
+SELECT * FROM GradleJavaCompat;

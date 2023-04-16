@@ -22,6 +22,7 @@ import org.gradle.kotlin.dsl.provideDelegate
 plugins {
     id("com.diffplug.spotless")
     id("com.javiersc.gradle.plugins.dependency.updates")
+    id("com.palantir.baseline-reproducibility")
 }
 
 enum class ScriptLanguage { GradleBuild, KotlinScriptBuild }

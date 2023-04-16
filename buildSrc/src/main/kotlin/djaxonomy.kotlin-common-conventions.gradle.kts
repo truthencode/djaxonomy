@@ -27,14 +27,24 @@ plugins {
     id("djaxonomy.java-common-conventions")
 }
 
+val defaultJavaToolChainVersion: String by project
+
 dependencies {
     constraints {
         // Define dependency versions as constraints
-        implementation("org.apache.commons:commons-text:1.9")
+        // implementation("org.apache.commons:commons-text:1.9")
     }
 
     // Align versions of all Kotlin components
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
+    // configuration objects https://github.com/sksamuel/hoplite
+    // implementation ("com.sksamuel.hoplite:hoplite-core:<version>")
 
 
+}
+
+kotlin {
+    jvmToolchain {
+        languageVersion.set(JavaLanguageVersion.of(defaultJavaToolChainVersion))
+    }
 }
