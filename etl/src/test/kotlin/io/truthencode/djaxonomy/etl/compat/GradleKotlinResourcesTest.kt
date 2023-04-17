@@ -17,27 +17,24 @@
  */
 package io.truthencode.djaxonomy.etl.compat
 
+import io.github.oshai.KotlinLogging
 import io.kotest.core.spec.style.DescribeSpec
+import io.kotest.matchers.ints.shouldBeExactly
 import io.kotest.matchers.string.shouldContain
+import io.truthencode.djaxonomy.GradleKotlinCompat
 import it.skrape.core.htmlDocument
-import it.skrape.fetcher.BrowserFetcher
+import it.skrape.fetcher.*
 
-import it.skrape.fetcher.HttpFetcher
-import it.skrape.fetcher.response
-import it.skrape.fetcher.skrape
-import it.skrape.matchers.toBe
-import it.skrape.matchers.toBePresent
-import it.skrape.matchers.toBePresentExactlyTwice
+import it.skrape.selects.DocElement
 import it.skrape.selects.and
-import it.skrape.selects.html5.caption
+import it.skrape.selects.html5.*
 
 //import it.skrape.selects.html5.caption
-import it.skrape.selects.html5.div
-import it.skrape.selects.html5.span
-import it.skrape.selects.html5.table
 
-class GradleKotlinResources : DescribeSpec({
+
+class GradleKotlinResourcesTest : DescribeSpec({
     val compatUrl = "https://docs.gradle.org/8.0/userguide/compatibility.html#kotlin"
+    val logger = KotlinLogging.logger {}
     beforeTest {
 
     }
@@ -46,7 +43,7 @@ class GradleKotlinResources : DescribeSpec({
     }
 
     val gradleKotlinCompatHtml = """
-         <html>
+         <html lang="en_US">
             <body>
         <table class="tableblock frame-all grid-all stretch">
         <caption class="title">Table 2. Embedded Kotlin version</caption>
@@ -157,109 +154,96 @@ class GradleKotlinResources : DescribeSpec({
         </html>
     """.trimIndent()
 
+    data class CompatInfo(var compatInfo: List<GradleKotlinCompat> = emptyList())
     describe("Gradle Kotlin Compatibility tables") {
         it("should be read from a table for embedded") {
 
 
             htmlDocument(gradleKotlinCompatHtml) {
+
                 table {
                     withClass = "tableblock" and "frame-all"
 
-//                            font-size: 100%;
-//                            font-weight: normal;
-//                            font-style: normal;
-//                            cursor: auto;
-//                            tab-size: 4;
-//                            color: #02303A;
-//                            font-family: "Lato", "Helvetica Neue", Arial, sans-serif;
-//                            line-height: 1.5;
-//                            -webkit-text-size-adjust: 100%;
-//                            direction: ltr;
-//                            box-sizing: border-box;
-//                            border-spacing: 0;
-//                            background: white;
-//                            margin-bottom: 1.25em;
-//                            max-width: 100%;
-//                            border-collapse: separate;
-//                            border: 0 solid #dedede;
-//                            border-width: 1px;
-                    var cap: String?
+                    var cap: List<DocElement>? = emptyList()
+
                     caption {
                         withClass = "title"
-                        this.findFirst {
-                            cap = text
-                            text shouldContain "Table"
+                        this.findAll {
+                            cap = this
+                            this.forEach { e -> e.text shouldContain "Table" }
+
                         }
                     }
-//                        "#content > div:nth-child(2) > div > table" {
-//                            findFirst {
-//                                text toBe "i'm a paragraph"
-//                            }
-//                            findAll {
-//                                size toBe 2
-//                            }
-//                        }
+                    cap?.let {
+                        logger.warn {
+                            "found ${cap?.size} captions"
+                        }
+                    }
+                    findAll("tr").forEach { a ->
+                        val data = a.findAll("td")
+                        logger.warn("found ${data.size} cells")
+                        data.size shouldBeExactly 3
+                        Triple(data[0], data[1], data[2])
+                    }
+
                 }
+//                "#content > div:nth-child(2) > div > table" {
+////                            findFirst {
+////                                text toBe "i'm a paragraph"
+////                            }
+////                            findAll {
+////                                size toBe 2
+////                            }
+////                        }
             }
         }
     }
 
-    xdescribe("A working url scrape template") {
+    describe("A working url scrape template") {
         it("should be able to be ignored") {
-            skrape(BrowserFetcher) {
+            val sd = skrape(HttpFetcher) {
                 request {
-                    url = "http://localhost:8080/example"
+                    url = compatUrl
                 }
-                response {
+
+                extractIt<CompatInfo> { ci ->
 //                   val hd = htmlDocument(responseBody,baseUri)
                     this.htmlDocument {
-                        // all official html and html5 elements are supported by the DSL
-                        div {
-                            withClass = "foo" and "bar" and "fizz" and "buzz"
+                        "#content > div:nth-child(2) > div > table" {
+                            withClass = "tableblock" and "frame-all"
 
-                            findFirst {
-                                text toBe "div with class foo"
+                            var cap: List<DocElement>? = emptyList()
 
-                                // it's possible to search for elements from former search results
-                                // e.g. search all matching span elements within the above div with class foo etc...
-                                span {
-                                    findAll {
-                                        // do something
-                                    }
+                            caption {
+                                withClass = "title"
+                                this.findAll {
+                                    cap = this
+                                    this.forEach { e -> e.text shouldContain "Table" }
+
                                 }
                             }
-
-                            findAll {
-                                toBePresentExactlyTwice
+                            cap?.let {
+                                logger.warn {
+                                    "found ${cap?.size} captions"
+                                }
                             }
-                        }
-                        // can handle custom tags as well
-                        "a-custom-tag" {
-                            findFirst {
-                                toBePresent
-                                text toBe "i'm a custom html5 tag"
-                                text
+                            findAll("tr:nth-child(n+2)").forEach { a ->
+                                val data = a.findAll("td")
+                                data.size shouldBeExactly 3
+                                logger.warn("found ${data.size} cells, adding to existing ${ci.compatInfo.size} values")
+                                val gc = GradleKotlinCompat(data[0].text, data[1].text, data[2].text)
+                                logger.warn("info -> $gc")
+                                ci.compatInfo = ci.compatInfo.plus(gc)
+                                logger.warn("new size ${ci.compatInfo.size}")
                             }
-                        }
-                        // can handle custom tags written in css selctor query syntax
-                        "div.foo.bar.fizz.buzz" {
-                            findFirst {
-                                text toBe "div with class foo"
-                            }
-                        }
 
-                        // can handle custom tags and add selector specificas via DSL
-                        "div.foo" {
-
-                            withClass = "bar" and "fizz" and "buzz"
-
-                            findFirst {
-                                text toBe "div with class foo"
-                            }
                         }
                     }
                 }
             }
+
+            sd.compatInfo.size shouldBeExactly 18
+            logger.warn("Gradle Kotlin / Embedded Compatibility ${sd.compatInfo}")
         }
     }
 
