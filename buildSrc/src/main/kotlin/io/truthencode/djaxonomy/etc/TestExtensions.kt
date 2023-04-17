@@ -1,12 +1,11 @@
 package io.truthencode.djaxonomy.etc
 
-
 import org.gradle.api.Project
 import org.gradle.api.plugins.jvm.JvmTestSuite
 import org.gradle.kotlin.dsl.invoke
 import org.gradle.kotlin.dsl.provideDelegate
 
-class TestBuildSupport (proj: Project) {
+class TestBuildSupport(proj: Project) {
     val koTestVersion: String by proj
     val applyMockito = { suite: JvmTestSuite ->
         suite.useJUnitJupiter()

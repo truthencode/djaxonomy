@@ -16,5 +16,5 @@
  * limitations under the License.
  */
 plugins {
-     id("app.cash.sqldelight")
+    id("app.cash.sqldelight")
 }

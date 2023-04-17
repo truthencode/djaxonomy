@@ -42,7 +42,7 @@ configure<SpotlessExtension> {
             this.target(
                 listOf(
                     "*.kt",
-                )
+                ),
             )
             diktat("1.0.3").configFile(rootProject.file("diktat-analysis.yml"))
         }

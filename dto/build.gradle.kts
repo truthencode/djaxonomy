@@ -24,23 +24,22 @@ dependencies {
     api(project(":list"))
     dependencies {
         // SQLDelight integration
-  implementation("app.cash.sqldelight:sqlite-driver:2.0.0-alpha05")
-  // async / coroutine support
-   implementation("app.cash.sqldelight:coroutines-extensions:2.0.0-alpha05")
-   // sqllite driver 
-    implementation("app.cash.sqldelight:sqlite-driver:2.0.0-alpha05")
+        implementation("app.cash.sqldelight:sqlite-driver:2.0.0-alpha05")
+        // async / coroutine support
+        implementation("app.cash.sqldelight:coroutines-extensions:2.0.0-alpha05")
+        // sqllite driver
+        implementation("app.cash.sqldelight:sqlite-driver:2.0.0-alpha05")
 // web scraping
         implementation("it.skrape:skrapeit:1.1.5")
         testImplementation("it.skrape:skrapeit-core:+")
         testImplementation("it.skrape:skrapeit-ktor:+")
+    }
 }
-}
-
 
 sqldelight {
-  databases {
-    create("Database") {
-      packageName.set("io.truthencode.djaxonomy")
+    databases {
+        create("Database") {
+            packageName.set("io.truthencode.djaxonomy")
+        }
     }
-  }
 }

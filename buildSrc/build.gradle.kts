@@ -46,13 +46,10 @@ dependencies {
     // implementation("com.palantir.baseline:com.palantir.gradle-baseline-config:$palantirPluginVersion")
     // classpath for  id("com.palantir.baseline")
     implementation("com.palantir.baseline:gradle-baseline-java:$palantirPluginVersion")
-        // implementation("com.palantir.baseline:com.palantir.baseline-reproducibility:$palantirPluginVersion")
+    // implementation("com.palantir.baseline:com.palantir.baseline-reproducibility:$palantirPluginVersion")
 //    implementation("com.palantir.baseline:gradle-baseline-java:$palantirPluginVersion")
 
     // implementation("app.cash.sqldelight:runtime-jvm:2.0.0-alpha05")
-
-
-
 }
 // TODO: pull from properties and transliterate to Kotlin-DSL
 // val kotlin_version = "1.6.10"

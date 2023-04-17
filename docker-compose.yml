@@ -16,44 +16,44 @@
 
 version: "3.3"
 services:
-   orbital:
-      image: orbitalhq/orbital:${ORBITAL_VERSION:-latest}
-      environment:
-         OPTIONS: >-
-            --vyne.analytics.mode=InProcess
-            --vyne.analytics.persistRemoteCallResponses=true
-            --vyne.analytics.persistResults=true
-      expose:
-         - 9022
-      ports:
-         - "9022:9022"
-      volumes:
-         - ~/.orbital/license:/opt/var/orbital/license
-         - ./orbital/config:/opt/service/config
-      deploy:
-         resources:
-            limits:
-               memory: 600mb
+  orbital:
+    image: orbitalhq/orbital:${ORBITAL_VERSION:-latest}
+    environment:
+      OPTIONS: >-
+        --vyne.analytics.mode=InProcess
+        --vyne.analytics.persistRemoteCallResponses=true
+        --vyne.analytics.persistResults=true
+    expose:
+      - 9022
+    ports:
+      - 9022:9022
+    volumes:
+      - ~/.orbital/license:/opt/var/orbital/license
+      - ./orbital/config:/opt/service/config
+    deploy:
+      resources:
+        limits:
+          memory: 600mb
 
-   schema-server:
-      image: orbitalhq/schema-server:${ORBITAL_VERSION:-latest}
-      volumes:
-         - ${SCHEMA_PATH:-.}:/var/lib/orbital/schema-server
-      environment:
-         OPTIONS: >-
-            --server.port=80
-            --vyne.repositories.repository-path=/var/lib/vyne/schema-server
-            ## --vyne.repositories.config-file=/var/lib/vyne/schema-server/schema-server.conf
-            --eureka.uri=http://eureka
-            --eureka.instance.preferIpAddress=true
-      deploy:
-         resources:
-            limits:
-               memory: 600mb
+  schema-server:
+    image: orbitalhq/schema-server:${ORBITAL_VERSION:-latest}
+    volumes:
+      - ${SCHEMA_PATH:-.}:/var/lib/orbital/schema-server
+    environment:
+      OPTIONS: >-
+        --server.port=80
+        --vyne.repositories.repository-path=/var/lib/vyne/schema-server
+        ## --vyne.repositories.config-file=/var/lib/vyne/schema-server/schema-server.conf
+        --eureka.uri=http://eureka
+        --eureka.instance.preferIpAddress=true
+    deploy:
+      resources:
+        limits:
+          memory: 600mb
 
-      expose:
-         - 7655
-         - 9305
-      ports:
-         - "7655:7655"
-         - "9305:9305"
+    expose:
+      - 7655
+      - 9305
+    ports:
+      - 7655:7655
+      - 9305:9305

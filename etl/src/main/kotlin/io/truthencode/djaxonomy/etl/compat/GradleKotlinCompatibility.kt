@@ -19,5 +19,4 @@ package io.truthencode.djaxonomy.etl.compat
 
 object GradleKotlinCompatibility {
     val compatUrl = "https://docs.gradle.org/8.0/userguide/compatibility.html#kotlin"
-
 }

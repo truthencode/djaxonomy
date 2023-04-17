@@ -24,19 +24,14 @@ import io.kotest.matchers.string.shouldContain
 import io.truthencode.djaxonomy.GradleKotlinCompat
 import it.skrape.core.htmlDocument
 import it.skrape.fetcher.*
-
 import it.skrape.selects.DocElement
 import it.skrape.selects.and
 import it.skrape.selects.html5.*
-
-//import it.skrape.selects.html5.caption
-
 
 class GradleKotlinResourcesTest : DescribeSpec({
     val compatUrl = "https://docs.gradle.org/8.0/userguide/compatibility.html#kotlin"
     val logger = KotlinLogging.logger {}
     beforeTest {
-
     }
 
     afterTest { (testCase, result) ->
@@ -158,7 +153,6 @@ class GradleKotlinResourcesTest : DescribeSpec({
     describe("Gradle Kotlin Compatibility tables") {
         it("should be read from a table for embedded") {
 
-
             htmlDocument(gradleKotlinCompatHtml) {
 
                 table {
@@ -171,7 +165,6 @@ class GradleKotlinResourcesTest : DescribeSpec({
                         this.findAll {
                             cap = this
                             this.forEach { e -> e.text shouldContain "Table" }
-
                         }
                     }
                     cap?.let {
@@ -185,16 +178,15 @@ class GradleKotlinResourcesTest : DescribeSpec({
                         data.size shouldBeExactly 3
                         Triple(data[0], data[1], data[2])
                     }
-
                 }
 //                "#content > div:nth-child(2) > div > table" {
-////                            findFirst {
-////                                text toBe "i'm a paragraph"
-////                            }
-////                            findAll {
-////                                size toBe 2
-////                            }
-////                        }
+// //                            findFirst {
+// //                                text toBe "i'm a paragraph"
+// //                            }
+// //                            findAll {
+// //                                size toBe 2
+// //                            }
+// //                        }
             }
         }
     }
@@ -219,7 +211,6 @@ class GradleKotlinResourcesTest : DescribeSpec({
                                 this.findAll {
                                     cap = this
                                     this.forEach { e -> e.text shouldContain "Table" }
-
                                 }
                             }
                             cap?.let {
@@ -236,7 +227,6 @@ class GradleKotlinResourcesTest : DescribeSpec({
                                 ci.compatInfo = ci.compatInfo.plus(gc)
                                 logger.warn("new size ${ci.compatInfo.size}")
                             }
-
                         }
                     }
                 }
@@ -246,7 +236,6 @@ class GradleKotlinResourcesTest : DescribeSpec({
             logger.warn("Gradle Kotlin / Embedded Compatibility ${sd.compatInfo}")
         }
     }
-
 
 //    xdescribe("Gradle Kotlin Compatibility") {
 //        it("should be available for embedded") {
@@ -267,34 +256,34 @@ class GradleKotlinResourcesTest : DescribeSpec({
 //                        table {
 //                            withClass = "tableblock" and "frame-all"
 //
-////                            font-size: 100%;
-////                            font-weight: normal;
-////                            font-style: normal;
-////                            cursor: auto;
-////                            tab-size: 4;
-////                            color: #02303A;
-////                            font-family: "Lato", "Helvetica Neue", Arial, sans-serif;
-////                            line-height: 1.5;
-////                            -webkit-text-size-adjust: 100%;
-////                            direction: ltr;
-////                            box-sizing: border-box;
-////                            border-spacing: 0;
-////                            background: white;
-////                            margin-bottom: 1.25em;
-////                            max-width: 100%;
-////                            border-collapse: separate;
-////                            border: 0 solid #dedede;
-////                            border-width: 1px;
+// //                            font-size: 100%;
+// //                            font-weight: normal;
+// //                            font-style: normal;
+// //                            cursor: auto;
+// //                            tab-size: 4;
+// //                            color: #02303A;
+// //                            font-family: "Lato", "Helvetica Neue", Arial, sans-serif;
+// //                            line-height: 1.5;
+// //                            -webkit-text-size-adjust: 100%;
+// //                            direction: ltr;
+// //                            box-sizing: border-box;
+// //                            border-spacing: 0;
+// //                            background: white;
+// //                            margin-bottom: 1.25em;
+// //                            max-width: 100%;
+// //                            border-collapse: separate;
+// //                            border: 0 solid #dedede;
+// //                            border-width: 1px;
 //                        }
 //
-////                        "#content > div:nth-child(2) > div > table" {
-////                            findFirst {
-////                                text toBe "i'm a paragraph"
-////                            }
-////                            findAll {
-////                                size toBe 2
-////                            }
-////                        }
+// //                        "#content > div:nth-child(2) > div > table" {
+// //                            findFirst {
+// //                                text toBe "i'm a paragraph"
+// //                            }
+// //                            findAll {
+// //                                size toBe 2
+// //                            }
+// //                        }
 //                    }
 //                }
 //            }

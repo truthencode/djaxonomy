@@ -30,11 +30,4 @@ dependencies {
     implementation("it.skrape:skrapeit:$skrapeitVersion")
 //    testImplementation("it.skrape:skrapeit-core:+")
     testImplementation("it.skrape:skrapeit-ktor:+")
-//    testImplementation("io.kotest:kotest-runner-junit5-jvm:4.6.0")
-//    testImplementation ("io.kotest:kotest-assertions-core:$kotestVersion")
-//    testImplementation ("io.kotest:kotest-property:$kotestVersion")
 }
-//
-//tasks.withType<Test>().configureEach {
-//    useJUnitPlatform()
-//}

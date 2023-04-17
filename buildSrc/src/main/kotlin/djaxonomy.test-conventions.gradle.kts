@@ -17,8 +17,5 @@
  */
 plugins {
     id("djaxonomy.java-common-conventions")
-     `jvm-test-suite`
+    `jvm-test-suite`
 }
-
-
-

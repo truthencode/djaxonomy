@@ -18,17 +18,14 @@
 import io.truthencode.djaxonomy.etc.TestBuildSupport
 import org.gradle.api.plugins.jvm.JvmTestSuite
 import org.gradle.kotlin.dsl.invoke
-import org.gradle.kotlin.dsl.register
 
 plugins {
     id("djaxonomy.test-conventions")
 }
 
-
 enum class KotlinTestKits {
     KoTest, KotlinTest
 }
-
 
 interface KotlinTestKitExtension {
     val useKotlinTestKit: Property<KotlinTestKits>
@@ -37,7 +34,8 @@ interface KotlinTestKitExtension {
 val koTestVersion: String by project
 
 val extension = project.extensions.create<KotlinTestKitExtension>("KotlinTestKits")
-extension.useKotlinTestKit.convention(KotlinTestKits.KoTest
+extension.useKotlinTestKit.convention(
+    KotlinTestKits.KoTest,
 )
 
 testing {
@@ -45,8 +43,7 @@ testing {
     val ts = TestBuildSupport(project)
     suites {
 
-
-        val test =when (extension.useKotlinTestKit.get()) {
+        val test = when (extension.useKotlinTestKit.get()) {
             KotlinTestKits.KoTest -> {
                 logger.warn("configuring KoTest for Unit testing")
                 val test: JvmTestSuite by getting(JvmTestSuite::class, ts.applyKoTest)
@@ -66,7 +63,6 @@ testing {
                 test
             }
         }
-
 
 //        val functionalTest by registering(JvmTestSuite::class) {
 //            dependencies {

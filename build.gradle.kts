@@ -100,7 +100,6 @@ val jacocoToolVersion: String by project
 //     }
 // }
 
-
 subprojects {
     version = rootProject.version
 }

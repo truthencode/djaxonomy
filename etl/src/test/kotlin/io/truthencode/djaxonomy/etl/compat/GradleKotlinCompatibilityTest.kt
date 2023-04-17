@@ -41,15 +41,15 @@ class GradleKotlinCompatibilityTest : DescribeSpec({
 
     val logger = KotlinLogging.logger {}
     data class MyExtractedData(
-            var httpMessage: String = "",
-            var userName: String = "",
-            var repositoryNames: List<String> = emptyList(),
-            var theThirdRepositoriesName: String = "",
-            var firstThreeHrefs: List<String> = emptyList(),
-            var overviewLink: String = "",
-            var firstThreeImageSources: List<String> = emptyList(),
-            var title: String = "",
-            var starsCount: String = ""
+        var httpMessage: String = "",
+        var userName: String = "",
+        var repositoryNames: List<String> = emptyList(),
+        var theThirdRepositoriesName: String = "",
+        var firstThreeHrefs: List<String> = emptyList(),
+        var overviewLink: String = "",
+        var firstThreeImageSources: List<String> = emptyList(),
+        var title: String = "",
+        var starsCount: String = "",
     )
 
     describe("Gradle Kotlin Compatibility") {
@@ -99,8 +99,7 @@ class GradleKotlinCompatibilityTest : DescribeSpec({
                 }
             }
             extracted.firstThreeHrefs shouldNotBe emptyList<String>()
-            logger.warn{ "extracted -> $extracted"}
-
+            logger.warn { "extracted -> $extracted" }
         }
     }
 })

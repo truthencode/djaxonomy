@@ -26,10 +26,12 @@ import lang.taxi.generators.java.TaxiGenerator
 import java.math.BigDecimal
 import java.util.logging.Logger
 
-class ConstraintTest : DescribeSpec ({
-    
+class ConstraintTest : DescribeSpec({
+
     val LOGGER = Logger.getLogger("io.truthencode.jaxonomy.ConstraintTest")
-    @DataType("vyne.Money") data class Money(val amount: BigDecimal, val currency: String)
+
+    @DataType("vyne.Money")
+    data class Money(val amount: BigDecimal, val currency: String)
 
     @ParameterType
     @DataType("vyne.SomeRequest")

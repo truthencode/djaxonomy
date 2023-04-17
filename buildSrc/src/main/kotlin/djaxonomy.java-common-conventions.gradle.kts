@@ -25,12 +25,12 @@ val jacocoToolVersion: String by project
 val javaToolchainVersion = provider {
     defaultJavaToolChainVersion.toInt()
 }
-//val defaultJavaToolchainVersion = provider {
+// val defaultJavaToolchainVersion = provider {
 //    javaToolchains.launcherFor {
 //        languageVersion.set(JavaLanguageVersion.of(defaultJavaToolChainVersion))
 //    }
 //
-//}
+// }
 
 java {
     toolchain {
