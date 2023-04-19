@@ -34,9 +34,9 @@ dependencies {
     // Align versions of all Kotlin components
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     // configuration objects https://github.com/sksamuel/hoplite
-    implementation("com.sksamuel.hoplite:hoplite-core:hopliteVersion")
-    implementation("com.sksamuel.hoplite:hoplite-hocon:hopliteVersion")
-    implementation("com.sksamuel.hoplite:hoplite-yaml:hopliteVersion")
+    implementation("com.sksamuel.hoplite:hoplite-core:$hopliteVersion")
+    implementation("com.sksamuel.hoplite:hoplite-hocon:$hopliteVersion")
+    implementation("com.sksamuel.hoplite:hoplite-yaml:$hopliteVersion")
 }
 
 kotlin {
