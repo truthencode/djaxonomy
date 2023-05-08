@@ -39,7 +39,7 @@ dependencies {
     implementation("org.jlleitschuh.gradle:ktlint-gradle:$ktlintPluginVersion")
     implementation("com.javiersc.gradle-plugins:dependency-updates:0.1.0-rc.45")
 
-    compileOnly("org.jetbrains.kotlin:kotlin-reflect:1.7.22") {
+    compileOnly("org.jetbrains.kotlin:kotlin-reflect:1.8.21") {
         version {
             strictly("1.6.10")
         }
