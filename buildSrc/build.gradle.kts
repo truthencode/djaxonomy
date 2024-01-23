@@ -34,7 +34,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin")
     implementation("io.quarkus:gradle-application-plugin:$quarkusPlatformVersion")
     implementation("org.kordamp.gradle:jandex-gradle-plugin:$jandexPluginVersion")
-    implementation("com.diffplug.spotless:spotless-plugin-gradle:6.24.0")
+    implementation("com.diffplug.spotless:spotless-plugin-gradle:6.25.0")
 //    implementation("com.diffplug.spotless-changelog:spotless-changelog-plugin-gradle:2.4.0")
     implementation("org.jlleitschuh.gradle:ktlint-gradle:$ktlintPluginVersion")
     implementation("com.javiersc.gradle-plugins:dependency-updates:0.1.0-rc.45")
