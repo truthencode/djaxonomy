@@ -39,7 +39,7 @@ dependencies {
     api("org.apache.commons:commons-math3:3.6.1")
     implementation("org.taxilang:taxi-annotations:$taxiVersion")
 
-    testImplementation(enforcedPlatform("com.fasterxml.jackson:jackson-bom:2.19.2"))
+    testImplementation(enforcedPlatform("com.fasterxml.jackson:jackson-bom:2.20.0"))
     testImplementation("com.fasterxml.jackson.module:jackson-module-parameter-names")
     testImplementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     testImplementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
