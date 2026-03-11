@@ -26,15 +26,38 @@
  */
 
 pluginManagement {
-    val kordampGradlePluginVersion: String by settings
+    // kordamp plugin currently has compatibility issues with gradle 9.x
+    // val kordampGradlePluginVersion: String by settings
     val mooltiverseNyxPluginVersion: String by settings
     plugins {
-        id("org.kordamp.gradle.project") version kordampGradlePluginVersion
-        id("org.kordamp.gradle.jar") version kordampGradlePluginVersion
-        id("org.kordamp.gradle.minpom") version kordampGradlePluginVersion
+        // id("org.kordamp.gradle.project") version kordampGradlePluginVersion
+        // id("org.kordamp.gradle.jar") version kordampGradlePluginVersion
+        // id("org.kordamp.gradle.minpom") version kordampGradlePluginVersion
         id("com.mooltiverse.oss.nyx") version mooltiverseNyxPluginVersion
     }
 }
 
+dependencyResolutionManagement {
+    repositories {
+        // Use Maven Central for resolving dependencies.
+        mavenCentral()
+        exclusiveContent {
+            forRepository {
+                maven {
+                    url = uri("https://repo.orbitalhq.com/release")
+                }
+            }
+            filter {
+                // this repository *only* contains artifacts with group "my.company"
+                includeGroup("org.taxilang")
+            }
+        }
+
+        maven { url = uri("https://jitpack.io") }
+    }
+}
+
 rootProject.name = "jaxonomy"
-include("lib", "utilities", "list", "app")
+include("lib")
+// include("lib", "utilities", "list")
+includeBuild("build-logic")

@@ -17,41 +17,54 @@
  */
 plugins {
     // Apply the org.jetbrains.kotlin.jvm Plugin to add support for Kotlin.
-    id("djaxonomy.kotlin-library-conventions")
+    id("buildlogic.kotlin-library-conventions")
+    id("buildlogic.kotlin-test-conventions")
+    // id("com.orbitalhq.preflight") version "0.0.4"
 }
 
 java.sourceSets["main"].java {
     srcDir("src/generated/kotlin")
 }
-val taxiVersion: String by project
 
+// packagingOptions {
+//  resources {
+//    excludes += "META-INF/"
+//    excludes += "okhttp3/"
+//    excludes += "kotlin/"
+//    excludes += "org/"
+//    excludes += ".properties"
+//    excludes += ".bin"
+//  }
+// }
 dependencies {
-    // Align versions of all Kotlin components
-    implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
+    // // Align versions of all Kotlin components
+    // implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
 
-    // Use the Kotlin JDK 8 standard library.
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    // // Use the Kotlin JDK 8 standard library.
+    // implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
-    implementation("com.google.guava:guava:30.1.1-jre")
+    implementation(libs.guava.jre) // "com.google.guava:guava:30.1.1-jre"
+    // implementation("com.google.guava:guava:30.1.1-jre")
 
     // This dependency is exported to consumers, that is to say found on their compile classpath.
-    api("org.apache.commons:commons-math3:3.6.1")
-    implementation("org.taxilang:taxi-annotations:$taxiVersion")
+    api(libs.commons.math3) // "org.apache.commons:commons-math3:3.6.1"
+    implementation(libs.taxi.annotations)
+    // implementation("org.taxilang:taxi-annotations:$taxiVersion")
 
-    testImplementation(enforcedPlatform("com.fasterxml.jackson:jackson-bom:2.21.1"))
-    testImplementation("com.fasterxml.jackson.module:jackson-module-parameter-names")
-    testImplementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-    testImplementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
-    testImplementation("com.fasterxml.jackson.datatype:jackson-datatype-jdk8")
+    testImplementation(enforcedPlatform(libs.fasterxml.jackson.bom)) // "com.fasterxml.jackson:jackson-bom:2.18.3"
+    testImplementation(libs.fasterxml.jackson.module.parameter.names)
+    testImplementation(libs.fasterxml.jackson.module.kotlin)
+    testImplementation(libs.fasterxml.jackson.datatype.jsr310)
+    // testImplementation(libs.fasterxml.jackson.datatype.jdk8)
 }
 
-testing {
-    suites {
-        // Configure the built-in test suite
-        val test by getting(JvmTestSuite::class) {
-            // Use Kotlin Test test framework
-            useKotlinTest()
-        }
-    }
-}
+// testing {
+//     suites {
+//         // Configure the built-in test suite
+//         val test by getting(JvmTestSuite::class) {
+//             // Use Kotlin Test test framework
+//             useKotlinTest()
+//         }
+//     }
+// }

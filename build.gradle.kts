@@ -16,7 +16,8 @@
  * limitations under the License.
  */
 plugins {
-    id("org.kordamp.gradle.project")
+    // id("org.kordamp.gradle.project")
+    id("buildlogic.common-conventions")
     id("com.mooltiverse.oss.nyx")
 }
 // general project information
@@ -34,55 +35,55 @@ group = "io.truthencode"
 
 val project_description: String by project
 
-config {
-//    release = if (releaseActive != null) releaseActive!! else false
-    info {
-        name = "DJAXonomy"
-        vendor = "TruthEncode"
-        description = project_description
-        inceptionYear = "2022"
-        tags = listOf("taxonomy", "dependency")
-//        version = VersionInfo().version
+// config {
+// //    release = if (releaseActive != null) releaseActive!! else false
+//     info {
+//         name = "DJAXonomy"
+//         vendor = "TruthEncode"
+//         description = project_description
+//         inceptionYear = "2022"
+//         tags = listOf("taxonomy", "dependency")
+// //        version = VersionInfo().version
 
-        links {
-            website = gitHubBaseSite
-            issueTracker = siteIssueTracker
-            scm = siteScm
-        }
+//         links {
+//             website = gitHubBaseSite
+//             issueTracker = siteIssueTracker
+//             scm = siteScm
+//         }
 
-        scm {
-            url = gitHubBaseSite
-            developerConnection = "scm:git:git@github.com:$gitHubAccountName/$gitExtension"
-            connection = "scm:git:git://github.com/github.com/$gitHubAccountName/$gitExtension"
-        }
+//         scm {
+//             url = gitHubBaseSite
+//             developerConnection = "scm:git:git@github.com:$gitHubAccountName/$gitExtension"
+//             connection = "scm:git:git://github.com/github.com/$gitHubAccountName/$gitExtension"
+//         }
 
-        organization {
-            name = "TruthEncode"
-            url = "https://github.com/truthencode"
-        }
+//         organization {
+//             name = "TruthEncode"
+//             url = "https://github.com/truthencode"
+//         }
 
-        people {
-            person {
-                id = "adarro"
-                name = "Andre White"
-                roles = listOf("developer", "owner")
-            }
-        }
-    }
+//         people {
+//             person {
+//                 id = "adarro"
+//                 name = "Andre White"
+//                 roles = listOf("developer", "owner")
+//             }
+//         }
+//     }
 
-    licensing {
+//     licensing {
 
-        licenses {
-            license {
-                id = "Apache-2.0" // org.kordamp.gradle.plugin.base.model.LicenseId.APACHE_2_0
-                url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
-            }
-        }
-    }
-    buildInfo {
-        enabled = true
-    }
-}
+//         licenses {
+//             license {
+//                 id = "Apache-2.0" // org.kordamp.gradle.plugin.base.model.LicenseId.APACHE_2_0
+//                 url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
+//             }
+//         }
+//     }
+//     buildInfo {
+//         enabled = true
+//     }
+// }
 
 subprojects {
     version = rootProject.version
