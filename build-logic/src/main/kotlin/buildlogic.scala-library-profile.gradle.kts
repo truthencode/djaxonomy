@@ -1,7 +1,7 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2022 Andre White.
+ * Copyright 2015-2021 Andre White.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,13 +16,6 @@
  * limitations under the License.
  */
 plugins {
-    id("code-quality")
-}
-
-repositories {
-    // Use Maven Central for resolving dependencies.
-    mavenCentral()
-    maven {
-        url = uri("https://repo.vyne.co/release")
-    }
+    id("buildlogic.scala-conventions")
+    id("buildlogic.java-library-conventions")
 }

@@ -1,7 +1,7 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2022 Andre White.
+ * Copyright 2022-2023 Andre White.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,13 +16,9 @@
  * limitations under the License.
  */
 plugins {
-    java apply(false)
-}
+    // Apply the common convention plugin for shared build configuration between library and application projects.
+    id("buildlogic.kotlin-common-conventions")
 
-val quarkusPlatformGroupId: String by project
-val quarkusPlatformArtifactId: String by project
-val quarkusPlatformVersion: String by project
-
-dependencies {
-    implementation(enforcedPlatform("$quarkusPlatformGroupId:$quarkusPlatformArtifactId:$quarkusPlatformVersion"))
+    // Apply the java-library plugin for API and implementation separation.
+    `java-library`
 }

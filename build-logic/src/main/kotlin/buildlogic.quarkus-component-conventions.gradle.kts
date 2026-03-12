@@ -1,7 +1,9 @@
+import org.kordamp.gradle.plugin.jandex.tasks.JandexTask
+
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2022 Andre White.
+ * Copyright 2022-2023 Andre White.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +19,6 @@
  */
 plugins {
     id("org.kordamp.gradle.jandex")
-    id("djaxonomy.quarkus-common-conventions")
 }
 
 /*
@@ -32,7 +33,7 @@ be aware of at compile time.
 DOES NOT APPLY TO:
 (Mutually exclusive) actual quarkus application
 
-You should instead apply 'djaxonomy.quarkus-application-conventions' if the module actually invokes
+You should instead apply 'buildlogic.quarkus-application-conventions' if the module actually invokes
 the quarkus engine directly.
 
 WHAT THIS DOES:
@@ -41,3 +42,15 @@ Defines Quarkus version information (Bom)
 
 Adds Jandex plugin to provide index of classes / objects / beans Main Quarkus app needs to register.
  */
+tasks {
+    withType(JavaCompile::class.java) {
+        // Add index to test compile dependency explicitly
+        if (name.contains("Test")) {
+            val tsk = tasks.withType(JandexTask::class.java)
+            dependsOn(tsk)
+        }
+        withType<ScalaDoc> {
+            dependsOn(tasks.named("jandex"))
+        }
+    }
+}

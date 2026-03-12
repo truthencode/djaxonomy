@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2022 Andre White.
+ * Copyright 2015-2026
+ *
+ * Author: Andre White.
+ * FILE: JavaDistributionTest.kt
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,21 +21,49 @@
 package io.truthencode.jaxonomy
 
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
-import kotlin.test.Test
-import kotlin.test.assertTrue
+import com.fasterxml.jackson.module.kotlin.readValue
+import io.kotest.core.spec.style.DescribeSpec
+import io.kotest.core.test.EnabledIf
+import io.truthencode.taxi.jvm.java.Distribution
+import org.junit.jupiter.api.Assertions.assertTrue
+import java.net.URI
+import java.nio.file.Paths
+import kotlin.io.path.exists
 
-class JavaDistributionTest {
-    @Test
-    fun someLibraryMethodReturnsTrue() {
-        val mapper = jacksonObjectMapper()
-        this.javaClass.getResourceAsStream("/java-distributions.json").use { inputStream ->
-            val results = mapper.readTree(inputStream)
-            assertTrue(!results.isEmpty)
-            for (rslt in results) {
-                System.out.println(rslt.toPrettyString())
-                // FIXME: Requires type mapper from WebService -> Distribution object
-                // val dists: List<Distribution> = mapper.readValue(rslt.toString())
-            }
+class JavaDistributionTest :
+  DescribeSpec({
+    // distribution test file should be generated using FooJay's service
+    // https://api.foojay.io/swagger-ui/
+
+    fun resourceExists(path: String): Boolean {
+      val res = this.javaClass.getResource(path).let { it?.file }
+      res?.isEmpty()?.let {
+        return if (!it) {
+          Paths.get(URI(res)).exists()
+        } else {
+          false
         }
+      }
+      return false
     }
-}
+
+    val javaDistributionJson = "java-distributions.json"
+    val enabledWhenFileAvailable: EnabledIf = {
+      resourceExists(javaDistributionJson)
+    }
+
+    describe("A java sdk") {
+      it("should be readable via json").config(enabledIf = enabledWhenFileAvailable) {
+        val mapper = jacksonObjectMapper()
+        this.javaClass.getResourceAsStream(javaDistributionJson).use { inputStream ->
+          val results = mapper.readTree(inputStream)
+          assertTrue(!results.isEmpty)
+          for (rslt in results) {
+            System.out.println(rslt.toPrettyString())
+            // FIXME: Requires type mapper from WebService -> Distribution object
+            val dists: List<Distribution> = mapper.readValue(rslt.toString())
+          }
+        }
+      }
+    }
+  })
