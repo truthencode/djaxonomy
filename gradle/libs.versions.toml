@@ -402,7 +402,7 @@ ruippeixotog-scala-scraper-s3 = { module = "net.ruippeixotog:scala-scraper_3", v
 savro-s213 = { module = "ca.dataedu:savro_2.13", version.ref = "savro" }
 scala-compiler-s3 = { module = "org.scala-lang:scala3-compiler_3", version.ref = "scala3-version" }
 scala-extensions = "io.rest-assured:scala-extensions:6.0.0"
-scala-library = "org.scala-lang:scala-library:2.13.14"
+scala-library = "org.scala-lang:scala-library:2.13.18"
 scala-library-s3 = { module = "org.scala-lang:scala3-library_3", version.ref = "scala3-version" }
 scala-logging-s213 = { module = "com.typesafe.scala-logging:scala-logging_2.13" }
 scala-logging-s3 = { module = "com.typesafe.scala-logging:scala-logging_3", version.ref = "scala-logging" }
