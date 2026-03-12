@@ -20,16 +20,6 @@ plugins {
   `kotlin-dsl`
 }
 
-repositories {
-  gradlePluginPortal()
-  google()
-  mavenCentral()
-  maven("https://jitpack.io")
-  maven {
-    url = uri("https://repo.orbitalhq.com/release")
-  }
-}
-
 val kotlinVersion: String by project
 val quarkusPlatformVersion: String by project
 val jandexPluginVersion: String by project
@@ -69,7 +59,7 @@ dependencies {
   implementation(libs.kordamp.jandex.plugin)
 
   // Database
-  implementation(CashApp.sqlDelight.gradlePlugin)
+  implementation(libs.cashapp.sqldelight.plugin)
 
   // String utils
   // camel / snake etc.

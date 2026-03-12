@@ -1,5 +1,3 @@
-import org.gradle.kotlin.dsl.repositories
-
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -35,10 +33,6 @@ pluginManagement {
     val refreshVersionsPluginVersion: String by settings
 
     plugins {
-//        id("org.kordamp.gradle.project") version kordampGradlePluginVersion
-//        id("org.kordamp.gradle.jar") version kordampGradlePluginVersion
-//        id("org.kordamp.gradle.minpom") version kordampGradlePluginVersion
-//        id("com.mooltiverse.oss.nyx") version mooltiverseNyxPluginVersion
         id("org.gradle.toolchains.foojay-resolver-convention") version foojayResolverPluginVersionversion
         id("com.palantir.baseline") version palantirPluginVersion
         id("com.palantir.baseline-config") version palantirPluginVersion
@@ -46,12 +40,10 @@ pluginManagement {
         id("org.scoverage") version "8.1"
         id("io.quarkus") version quarkusPlatformVersion
         id("de.fayard.refreshVersions") version refreshVersionsPluginVersion
-//        id("ru.vyarus.mkdocs") version "3.0.0"
     }
 }
 
 plugins {
-//    id("com.mooltiverse.oss.nyx")
     id("org.gradle.toolchains.foojay-resolver-convention")
     id("de.fayard.refreshVersions")
 }
@@ -74,8 +66,21 @@ dependencyResolutionManagement {
         }
 
         maven { url = uri("https://jitpack.io") }
+      //  gradlePluginPortal() // may need for build-logic declared plugins?
+      //  google() // verify if any are NOT in maven central
     }
 }
+
+dependencyResolutionManagement {
+  versionCatalogs {
+    // declares an additional catalog, named 'testLibs', from the 'test-libs.versions.toml' file
+    create("libs") {
+      from(files("../gradle/libs.versions.toml"))
+    }
+  }
+}
+
+rootProject.name = "build-logic"
 
 // refreshVersions {
 //
@@ -137,13 +142,4 @@ rootProject.name = "showcase"
 includeBuild("build-src")
 
 */
-dependencyResolutionManagement {
-    versionCatalogs {
-        // declares an additional catalog, named 'testLibs', from the 'test-libs.versions.toml' file
-        create("libs") {
-            from(files("../gradle/libs.versions.toml"))
-        }
-    }
-}
 
-rootProject.name = "build-logic"
