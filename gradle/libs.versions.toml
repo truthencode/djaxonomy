@@ -337,7 +337,7 @@ pulsar4s-avro-s213 = { module = "com.clever-cloud.pulsar4s:pulsar4s-avro_2.13", 
 pulsar4s-core-s213 = { module = "com.clever-cloud.pulsar4s:pulsar4s-core_2.13", version.ref = "com-clever-cloud-pulsar4s" }
 pulsar4s-monix-s213 = { module = "com.clever-cloud.pulsar4s:pulsar4s-monix_2.13", version.ref = "com-clever-cloud-pulsar4s" }
 quarkus-arc = { module = "io.quarkus:quarkus-arc" }
-quarkus-bom = "io.quarkus.platform:quarkus-bom:3.32.2"
+quarkus-bom = "io.quarkus.platform:quarkus-bom:3.32.3"
 quarkus-cucumber = { module = "io.quarkiverse.cucumber:quarkus-cucumber", version.ref = "quarkus-cucumber" }
 quarkus-flyway = { module = "io.quarkus:quarkus-flyway" }
 quarkus-freemarker = { module = "io.quarkiverse.freemarker:quarkus-freemarker", version.ref = "quarkus-freemarker" }
