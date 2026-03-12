@@ -43,14 +43,11 @@ ru-vyarus-mkdocs = "ru.vyarus.mkdocs:4.0.1"
 
 [versions]
 allure = "2.33.0"
-antlr = "4.13.1"
 assertj = "3.27.7"
-assertj-core = "3.27.3"
 avro = "1.12.1"
 avrohugger-plugin = "1.1.0"
 bloop = "1.6.4"
 bootstrap = "5.3.3"
-bootstrap-icons = "1.10.5"
 chimney = "1.9.0"
 ci-detect-plugin = "0.5.0"
 com-clever-cloud-pulsar4s = "2.12.0.1"
@@ -59,7 +56,6 @@ eclipse-microprofile = "3.1"
 enumeratum = "1.9.6"
 errorprone-plugin = "4.1.0"
 errorprone-processor = "2.48.0"
-flexmark = "0.64.8"
 freefair-lombok-plugin = "9.2.0"
 getquill = "4.8.6"
 guava-truth = "33.5.0-jre"
@@ -70,7 +66,6 @@ hoplite = "2.9.0"
 htmx = "2.0.8"
 hypersistence = "3.9.2"
 jackson = "2.21.1"
-jade4j = "1.3.2"
 jakarta-annotations = "3.0.0"
 jakarta-inject = "2.0.1"
 jakarta-servlet-jakarta-servlet-api = "6.1.0"
@@ -86,7 +81,6 @@ jstachio = "1.3.7"
 ##  ⬆ = "5.11.4"
 ##  ⬆ = "5.12.0"
 junit-pioneer = "2.3.0"
-junit-platform = "1.10.0"
 junit5 = "6.0.3"
 kordamp-jandex-gradle-plugin = "2.0.0"
 kotest = "6.1.6"
@@ -120,7 +114,6 @@ savro = "0.12.1"
 ##     ⬆ = "3.3.0-SNAP4"
 scala-logging = "3.9.6"
 scala-scraper = "3.2.0"
-scala2-suffix = "2.13"
 scala2-version = "2.13.16"
 scala3-version = "3.7.3"
 scalaFmt = "3.1.1"
@@ -131,9 +124,10 @@ scalatest = "3.2.19"
 scalatestplus = "3.2.19.0"
 scoverage-engine = "2.5.2"
 scoverage-plugin = "8.1"
+sonarqube = "5.1.0.4882"
 sortablejs = "1.15.7"
 spotless-plugin = "8.3.0"
-sonarqube = "5.1.0.4882"
+sqldelight = "2.2.1"
 sttp = "3.9.8"
 taxi-lang = "1.69.2"
 truth = "1.4.5"
@@ -164,6 +158,7 @@ camel-core = { module = "org.apache.camel:camel-core", version.ref = "org-apache
 camel-main = { module = "org.apache.camel:camel-main", version.ref = "org-apache-camel" }
 camel-pulsar = { module = "org.apache.camel:camel-pulsar", version.ref = "org-apache-camel" }
 camel-testcontainers-junit5 = "org.apache.camel:camel-testcontainers-junit5:_"
+cashapp-sqldelight-plugin = { module = "app.cash.sqldelight:gradle-plugin", version.ref = "sqldelight" }
 chimney-s213 = { module = "io.scalaland:chimney_2.13", version.ref = "chimney" }
 chimney-s3 = { module = "io.scalaland:chimney_3", version.ref = "chimney" }
 ci-detect-plugin = { module = "be.vbgn.gradle:ci-detect-plugin", version.ref = "ci-detect-plugin" }
@@ -441,6 +436,7 @@ smallrye-mutiny-vertx = { module = "io.smallrye.reactive:smallrye-mutiny-vertx-w
 smallrye-mutiny-vertx-client = { module = "io.smallrye.reactive:smallrye-mutiny-vertx-web-client", version.ref = "mutiny-vertx" }
 smallrye-reactive-messaging-inmemory = { module = "io.smallrye.reactive:smallrye-reactive-messaging-in-memory" }
 softwaremill-sttp-s3 = { module = "com.softwaremill.sttp.client3:core_3", version.ref = "sttp" }
+sonar-sonarqube-plugin = { module = "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin", version.ref = "sonarqube" }
 spotless-plugin = { module = "com.diffplug.spotless:spotless-plugin-gradle", version.ref = "spotless-plugin" }
 squareup-moshi = { module = "com.squareup.moshi:moshi", version.ref = "moshi" }
 squareup-moshi-adapters = { module = "com.squareup.moshi:moshi-adapters", version.ref = "moshi" }
@@ -493,4 +489,3 @@ zio-s3 = { module = "dev.zio:zio_3", version.ref = "zio-prelude" }
 ##                                   ⬆ :26.0.1"
 ##                                   ⬆ :26.0.2"
 zio-test-junit-s3 = { module = "dev.zio:zio-test-junit_3", version.ref = "zio-prelude" }
-sonar-sonarqube-plugin = {module = "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin", version.ref = "sonarqube"}
