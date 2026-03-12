@@ -455,7 +455,7 @@ taxi-avrototaxi = { module = "org.taxilang:avro-to-taxi", version.ref = "taxi-la
 taxi-jpa = { module = "org.taxilang:taxi-jpa", version.ref = "taxi-lang" }
 taxi-lang = { module = "org.taxilang:taxi", version.ref = "taxi-lang" }
 testing-assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }
-typesafe-config = "com.typesafe:config:1.4.2"
+typesafe-config = "com.typesafe:config:1.4.6"
 ##                                 ⬆ :1.4.3"
 typesafe-scala-logging-s213 = { module = "com.typesafe.scala-logging:scala-logging_2.13", version.ref = "scala-logging" }
 typesafe-scala-logging-s3 = "com.typesafe.scala-logging:scala-logging_3:3.9.5"
