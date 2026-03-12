@@ -458,7 +458,7 @@ testing-assertj = { module = "org.assertj:assertj-core", version.ref = "assertj"
 typesafe-config = "com.typesafe:config:1.4.6"
 ##                                 ⬆ :1.4.3"
 typesafe-scala-logging-s213 = { module = "com.typesafe.scala-logging:scala-logging_2.13", version.ref = "scala-logging" }
-typesafe-scala-logging-s3 = "com.typesafe.scala-logging:scala-logging_3:3.9.5"
+typesafe-scala-logging-s3 = "com.typesafe.scala-logging:scala-logging_3:3.9.6"
 # version-plugin = { module = "com.github.ben-manes.versions:com.github.ben-manes.versions.gradle.plugin", version.ref = "version-plugin" }
 version-catalog-plugin = { module = "nl.littlerobots.version-catalog-update:nl.littlerobots.version-catalog-update.gradle.plugin", version.ref = "version-catalog-plugin" }
 #vertx-lang-scala = { module ="com.github.vert-x3:vertx-lang-scala", version.ref = "vertx"}
