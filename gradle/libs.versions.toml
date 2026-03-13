@@ -135,7 +135,7 @@ truth = "1.4.5"
 version-catalog-plugin = "1.1.0"
 vertx = "4.5.11"
 zio-dev = "2.1.24"
-zio-prelude = "1.0.0-RC46"
+zio-prelude = "1.0.18"
 
 [libraries]
 accord-core-s213 = { module = "com.wix:accord-core_2.13" }
