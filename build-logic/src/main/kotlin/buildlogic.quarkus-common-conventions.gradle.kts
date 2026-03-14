@@ -3,7 +3,7 @@
  * Adds quarkus specific core plugins and configurations
  * Includes basic CDI, Health Checks, Validation (Jakarta ala Hibernate) and basic testing.
  *
- * Advanced features (e.g. OpenAPI, RESTEasy Reactive, etc.) should be added to the project-specific build logic
+ * Advanced features (e.g. OpenAPI, REST, Reactive, etc.) should be added to the project-specific build logic
  *
  */
 import org.gradle.accessors.dm.LibrariesForLibs
@@ -19,20 +19,19 @@ val quarkusPlatformVersion: String by project
 
 dependencies {
     implementation(enforcedPlatform("$quarkusPlatformGroupId:$quarkusPlatformArtifactId:$quarkusPlatformVersion"))
-    implementation("io.quarkus:quarkus-arc")
-    implementation("io.quarkus:quarkus-smallrye-health")
-    implementation("io.quarkus:quarkus-hibernate-validator") {
+    implementation(libs.quarkus.arc)
+    implementation(libs.quarkus.smallrye.health)
+    implementation(libs.quarkus.hibernate.validator) {
         because(
             "Hibernate Validator is an implementation of the Jakarta Bean Validation specification." +
                 " Not specific to JPA.",
         )
     }
-//    implementation("io.quarkus:quarkus-rest")
+//    implementation(libs.quarkus.rest)
     // basic Quarkus Unit, Component and Integration test support included.
-    testImplementation("io.quarkus:quarkus-junit5")
-    testImplementation("io.quarkus:quarkus-junit5-component")
+    testImplementation(libs.quarkus.junit)
+//    testImplementation("io.quarkus:quarkus-junit5-component")
     testImplementation(libs.quarkus.cucumber)
-//    testImplementation("io.rest-assured:rest-assured")
 }
 
 tasks.withType<Test> {

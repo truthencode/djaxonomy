@@ -58,7 +58,7 @@
 services:
   orbital:
     image: orbitalhq/orbital:${ORBITAL_VERSION:-next}
-    user: "${UID:?UID is not provided, read this Docker Compose file for how to fix}:${GID:?GID is not provided, read this Docker Compose file for how to fix}"
+    # user: "${UID:?UID is not provided, read this Docker Compose file for how to fix}:${GID:?GID is not provided, read this Docker Compose file for how to fix}"
     networks:
       - nebula_network
     environment:

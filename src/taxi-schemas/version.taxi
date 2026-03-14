@@ -1,0 +1,54 @@
+import taxi.stdlib.indexOf
+namespace io.truthencode.taxi.versions {
+
+    [[A version of a software component, such as a library or framework.]]
+    type Version inherits String
+
+    [[A version expression represents a specific version or range of versions]]
+    type VersionExpression inherits String
+
+    [[A fragment of a version number, such as the major, minor, or patch version.]]
+    type VersionFragment inherits Int
+    
+    [[A pre-release identifier, such as "alpha", "beta", or "rc". or build metadata such as "build.1234"]]
+    type ExtraVersionFragment inherits String
+
+    [[MAJOR version when you make incompatible API changes]]
+    type MajorVersionFragment inherits VersionFragment
+
+    [[MINOR version when you add functionality in a backward compatible manner]]
+    type MinorVersionFragment inherits VersionFragment
+
+    [[PATCH version when you make backward compatible bug fixes]]
+    type PatchVersionFragment inherits VersionFragment
+
+    [[A pre-release version indicates that the version is unstable and might not satisfy the intended compatibility requirements]]
+    type PreReleaseVersionFragment inherits ExtraVersionFragment
+
+    [[Specific build meta data]]
+    type BuildMetaData inherits ExtraVersionFragment
+
+    [[An enumeration of the different components of a version number.]]
+    enum VersionComponent {
+        Major,
+        Minor,
+        Patch,
+        PreRelease,
+        BuildMetadata
+    }
+
+    model SemanticVersion {
+        major: MajorVersionFragment
+        minor: MinorVersionFragment
+        patch: PatchVersionFragment
+        preRelease: PreReleaseVersionFragment?
+        buildMetadata: ExtraVersionFragment?
+    }
+
+    [[A version range that specifies a range of acceptable versions for a dependency.]]
+    type VersionRange inherits String
+
+
+
+
+}
