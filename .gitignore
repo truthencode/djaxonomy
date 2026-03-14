@@ -471,3 +471,6 @@ gradle-app.setting
 *.hprof
 
 # End of https://www.toptal.com/developers/gitignore/api/java,node,maven,scala,gradle,kotlin,eclipse,intellij+all,openframeworks+visualstudio,bloop,metals
+
+# Kotlin Gradle plugin data, see https://kotlinlang.org/docs/whatsnew20.html#new-directory-for-kotlin-data-in-gradle-projects
+.kotlin/
