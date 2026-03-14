@@ -31,11 +31,11 @@ com-github-ManifestClasspath = "com.github.ManifestClasspath:0.1.0-RELEASE"
 com-github-ben-manes-versions = "com.github.ben-manes.versions:0.53.0"
 com-vanniktech-dependency-graph-generator = "com.vanniktech.dependency.graph.generator:0.8.0"
 com-zlad-gradle-avrohugger = "com.zlad.gradle.avrohugger:1.1.0"
-errorprone = "net.ltgt.errorprone:4.4.0"
+errorprone = "net.ltgt.errorprone:5.1.0"
 io-gatling-gradle = "io.gatling.gradle:3.15.0"
 lombok = "io.freefair.lombok:9.2.0"
 nl-littlerobots-version-catalog-update = "nl.littlerobots.version-catalog-update:1.1.0"
-nullaway = "net.ltgt.nullaway:2.4.1"
+nullaway = "net.ltgt.nullaway:3.0.0"
 org-openapi-generator = "org.openapi.generator:7.20.0"
 org-scoverage = "org.scoverage:8.1"
 org-sonarqube = "org.sonarqube:7.2.3.7755"
@@ -87,7 +87,7 @@ logback = "1.5.32"
 lombok = "1.18.44"
 manifold = "2026.1.6"
 me-atrox-haikunator-haikunator = "2.0.1"
-mockito = "5.22.0"
+mockito = "5.23.0"
 monix = "3.4.1"
 moshi = "1.15.2"
 mutiny-vertx = "3.21.5"
@@ -124,7 +124,7 @@ scoverage-plugin = "8.1"
 sonarqube = "5.1.0.4882"
 sortablejs = "1.15.7"
 spotless-plugin = "8.3.0"
-sqldelight = "2.2.1"
+sqldelight = "2.3.1"
 sttp = "3.9.8"
 taxi-lang = "1.69.2"
 truth = "1.4.5"
@@ -147,7 +147,7 @@ apache-logging-log4j-log4j-core = "org.apache.logging.log4j:log4j-core:3.0.0-bet
 avro-tools = { module = "org.apache.avro:avro-tools", version.ref = "avro" }
 avrohugger-plugin = { module = "com.zlad.gradle.avrohugger:com.zlad.gradle.avrohugger.gradle.plugin", version.ref = "avrohugger-plugin" }
 awaitility = { module = "org.awaitility:awaitility" }
-bootstrap = "org.webjars:bootstrap:5.3.8"
+bootstrap = { module = "org.webjars:bootstrap", version.ref = "bootstrap" }
 bootstrap-icons = "org.webjars.npm:bootstrap-icons:1.13.1"
 camel-componentdsl = { module = "org.apache.camel:camel-componentdsl", version.ref = "org-apache-camel" }
 camel-core = { module = "org.apache.camel:camel-core", version.ref = "org-apache-camel" }
@@ -405,7 +405,7 @@ xodus-entity-store = { module = "org.jetbrains.xodus:xodus-entity-store", versio
 xodus-environment = { module = "org.jetbrains.xodus:xodus-environment", version.ref = "jetbrains-xodus" }
 xodus-openAPI = { module = "org.jetbrains.xodus:xodus-openAPI", version.ref = "jetbrains-xodus" }
 xodus-vfs = { module = "org.jetbrains.xodus:xodus-vfs", version.ref = "jetbrains-xodus" }
-zio-prelude-s3 = "dev.zio:zio-prelude_3:2.1.24"
+zio-prelude-s3 = { module = "dev.zio:zio-prelude_3", version.ref = "zio-prelude" }
 zio-s213 = { module = "dev.zio:zio_2.13", version.ref = "zio-prelude" }
 zio-s3 = { module = "dev.zio:zio_3", version.ref = "zio-prelude" }
 zio-test-junit-s3 = { module = "dev.zio:zio-test-junit_3", version.ref = "zio-prelude" }
