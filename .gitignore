@@ -1,6 +1,8 @@
+# Created by https://www.toptal.com/developers/gitignore/api/java,node,maven,scala,gradle,kotlin,eclipse,intellij+all,openframeworks+visualstudio,bloop,metals
+# Edit at https://www.toptal.com/developers/gitignore?templates=java,node,maven,scala,gradle,kotlin,eclipse,intellij+all,openframeworks+visualstudio,bloop,metals
 
-# Created by https://www.toptal.com/developers/gitignore/api/java,maven,scala,gradle,kotlin,eclipse,intellij+all,openframeworks+visualstudio,node
-# Edit at https://www.toptal.com/developers/gitignore?templates=java,maven,scala,gradle,kotlin,eclipse,intellij+all,openframeworks+visualstudio,node
+### Bloop ###
+.bloop/
 
 ### Eclipse ###
 .metadata
@@ -213,6 +215,10 @@ buildNumber.properties
 .project
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
+
+### Metals ###
+.metals/
+project/**/metals.sbt
 
 ### Node ###
 # Logs
@@ -460,6 +466,8 @@ gradle-app.setting
 # Eclipse Core
 # JDT-specific (Eclipse Java Development Tools)
 
-# End of https://www.toptal.com/developers/gitignore/api/java,maven,scala,gradle,kotlin,eclipse,intellij+all,openframeworks+visualstudio,node
+### Gradle Patch ###
+# Java heap dump
+*.hprof
 
-**/generated/
+# End of https://www.toptal.com/developers/gitignore/api/java,node,maven,scala,gradle,kotlin,eclipse,intellij+all,openframeworks+visualstudio,bloop,metals
