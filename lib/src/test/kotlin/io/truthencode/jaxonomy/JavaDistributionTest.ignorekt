@@ -30,6 +30,7 @@ import java.net.URI
 import java.nio.file.Paths
 import kotlin.io.path.exists
 
+// Removed Foojay api from direct generation
 class JavaDistributionTest :
   DescribeSpec({
     // distribution test file should be generated using FooJay's service

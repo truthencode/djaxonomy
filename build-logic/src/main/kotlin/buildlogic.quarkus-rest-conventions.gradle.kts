@@ -1,12 +1,17 @@
+import org.gradle.accessors.dm.LibrariesForLibs
+
 plugins {
     id("buildlogic.quarkus-common-conventions")
 }
 
+val libs = the<LibrariesForLibs>()
+
 dependencies {
-    implementation("io.quarkus:quarkus-arc")
-    implementation("io.quarkus:quarkus-rest")
-    implementation("io.quarkus:quarkus-rest-client")
-    implementation("io.quarkus:quarkus-rest-jackson")
-    testImplementation("io.quarkus:quarkus-junit5")
-    testImplementation("io.rest-assured:rest-assured")
+    implementation(libs.quarkus.arc)
+    implementation(libs.quarkus.rest)
+    implementation(libs.quarkus.rest.client)
+    implementation(libs.quarkus.rest.jackson)
+    // quarkus test dependencies need to be moved to apply in jvmtest suite
+    testImplementation(libs.quarkus.junit)
+    testImplementation(libs.rest.assured)
 }
