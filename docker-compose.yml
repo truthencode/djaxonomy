@@ -138,7 +138,7 @@ services:
   # If provided (and configured), then
   # metrics are shown in endpoint dashboards
   prometheus:
-    image: prom/prometheus:v2.55.1
+    image: prom/prometheus:v3.10.0
     networks:
       - nebula_network
     ports:
