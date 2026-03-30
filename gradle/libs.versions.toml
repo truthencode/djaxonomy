@@ -346,7 +346,7 @@ scala-logging-s3 = { module = "com.typesafe.scala-logging:scala-logging_3", vers
 scala-scraper-s3 = { module = "net.ruippeixotog:scala-scraper_3", version.ref = "scala-scraper" }
 scala-stm-s213 = "org.scala-stm:scala-stm_2.13:0.11.1"
 scala2-library = { module = "org.scala-lang:scala-library", version.ref = "scala2-version" }
-scala3-compiler-s3 = "org.scala-lang:scala3-compiler_3:3.8.2"
+scala3-compiler-s3 = "org.scala-lang:scala3-compiler_3:3.8.3"
 scala3-library = { module = "org.scala-lang:scala3-library_3", version.ref = "scala3-version" }
 scala3-library-s3 = "org.scala-lang:scala3-library_3:3.8.2"
 scalac-scoverage-plugin = { module = "org.scoverage:org.scoverage.gradle.plugin", version.ref = "scoverage-plugin" }
