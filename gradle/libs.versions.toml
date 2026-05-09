@@ -282,7 +282,7 @@ org-eclipse-jetty-jetty-util-ajax = { module = "org.eclipse.jetty:jetty-util-aja
 org-testcontainers-junit-jupiter = { module = "org.testcontainers:junit-jupiter", version.ref = "org-testcontainers" }
 pearx-kasechange = { module = "net.pearx.kasechange:kasechange", version.ref = "pearx-kasechange" }
 pulsar = { module = "org.testcontainers:pulsar", version.ref = "org-testcontainers" }
-pulsar-client-all = "org.apache.pulsar:pulsar-client-all:4.2.0"
+pulsar-client-all = "org.apache.pulsar:pulsar-client-all:4.2.1"
 pulsar4s-avro-s213 = { module = "com.clever-cloud.pulsar4s:pulsar4s-avro_2.13", version.ref = "com-clever-cloud-pulsar4s" }
 pulsar4s-core-s213 = { module = "com.clever-cloud.pulsar4s:pulsar4s-core_2.13", version.ref = "com-clever-cloud-pulsar4s" }
 pulsar4s-monix-s213 = { module = "com.clever-cloud.pulsar4s:pulsar4s-monix_2.13", version.ref = "com-clever-cloud-pulsar4s" }
