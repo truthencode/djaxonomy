@@ -131,7 +131,7 @@ truth = "1.4.5"
 # version-plugin = "0.53.0"
 version-catalog-plugin = "1.1.0"
 vertx = "4.5.11"
-zio-dev = "2.1.25"
+zio-dev = "2.1.26"
 zio-prelude = "2.1.25"
 
 [libraries]
