@@ -186,7 +186,7 @@ fasterxml-jackson-module-s3 = { module = "com.fasterxml.jackson.module:jackson-m
 flexmark-all = "com.vladsch.flexmark:flexmark-all:0.64.8"
 flyway-database-postgresql = { module = "org.flywaydb:flyway-database-postgresql" }
 freefair-lombok-plugin = { module = "io.freefair.gradle:lombok-plugin", version.ref = "freefair-lombok-plugin" }
-gatling-charts-highcharts = "io.gatling.highcharts:gatling-charts-highcharts:3.15.0"
+gatling-charts-highcharts = "io.gatling.highcharts:gatling-charts-highcharts:3.15.1"
 github-oshai-kotlin-logging = { module = "io.github.oshai:kotlin-logging-jvm", version.ref = "oshai-logging" }
 google-truth = { module = "com.google.truth:truth", version.ref = "truth" }
 gradle-bloop-plugin-s213 = { module = "ch.epfl.scala:gradle-bloop_2.13", version.ref = "bloop" }
