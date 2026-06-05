@@ -10,7 +10,7 @@ NOTICE: You must still include a kotlin app / library etc. profile as we do not 
  */
 
 jacoco {
-    toolVersion = "0.8.14"
+    toolVersion = "0.8.15"
 //    reportsDirectory.set(layout.buildDirectory.dir("customJacocoReportDir"))
 }
 
