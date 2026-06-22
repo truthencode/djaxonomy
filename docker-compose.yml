@@ -91,7 +91,7 @@ services:
           memory: 1gb
 
   postgres:
-    image: postgres:15
+    image: postgres:18
     networks:
       - nebula_network
     expose:
