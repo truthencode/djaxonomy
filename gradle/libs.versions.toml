@@ -200,7 +200,7 @@ hoplite-core = { module = "com.sksamuel.hoplite:hoplite-core", version.ref = "ho
 hoplite-hocon = { module = "com.sksamuel.hoplite:hoplite-hocon", version.ref = "hoplite" }
 hoplite-yaml = { module = "com.sksamuel.hoplite:hoplite-yaml", version.ref = "hoplite" }
 hypersistence-utils = { module = "io.hypersistence:hypersistence-utils-hibernate-63", version.ref = "hypersistence" }
-hypersistence-utils-hibernate = "io.hypersistence:hypersistence-utils-hibernate-63:3.15.3"
+hypersistence-utils-hibernate = "io.hypersistence:hypersistence-utils-hibernate-63:3.15.4"
 io-jstach-jstachio = { module = "io.jstach:jstachio", version.ref = "jstachio" }
 io-jstach-jstachio-processor = { module = "io.jstach:jstachio-apt", version.ref = "jstachio" }
 io-quarkiverse-renarde-quarkus-renarde-oidc = { module = "io.quarkiverse.renarde:quarkus-renarde-oidc", version.ref = "quarkus-renarde" }
