@@ -37,7 +37,7 @@ pluginManagement {
         id("com.palantir.baseline") version palantirPluginVersion
         id("com.palantir.baseline-config") version palantirPluginVersion
         id("org.inferred.processors") version "3.7.0"
-        id("org.scoverage") version "8.1"
+        id("org.scoverage") version "9.1"
         id("io.quarkus") version quarkusPlatformVersion
         id("de.fayard.refreshVersions") version refreshVersionsPluginVersion
     }
