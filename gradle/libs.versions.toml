@@ -148,7 +148,7 @@ avro-tools = { module = "org.apache.avro:avro-tools", version.ref = "avro" }
 avrohugger-plugin = { module = "com.zlad.gradle.avrohugger:com.zlad.gradle.avrohugger.gradle.plugin", version.ref = "avrohugger-plugin" }
 awaitility = { module = "org.awaitility:awaitility" }
 bootstrap = { module = "org.webjars:bootstrap", version.ref = "bootstrap" }
-bootstrap-icons = "org.webjars.npm:bootstrap-icons:1.13.1"
+bootstrap-icons = "org.webjars.npm:bootstrap-icons:1.13.2"
 camel-componentdsl = { module = "org.apache.camel:camel-componentdsl", version.ref = "org-apache-camel" }
 camel-core = { module = "org.apache.camel:camel-core", version.ref = "org-apache-camel" }
 camel-main = { module = "org.apache.camel:camel-main", version.ref = "org-apache-camel" }
