@@ -42,7 +42,7 @@ org-sonarqube = "org.sonarqube:7.5.0.8588"
 ru-vyarus-mkdocs = "ru.vyarus.mkdocs:4.0.1"
 
 [versions]
-allure = "2.35.5"
+allure = "2.35.6"
 assertj = "3.27.7"
 avro = "1.12.2"
 avrohugger-plugin = "2.0.0"
