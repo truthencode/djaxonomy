@@ -218,7 +218,7 @@ javax-servlet-api = "javax.servlet:javax.servlet-api:4.0.1"
 javax-ws-rs-api = "javax.ws.rs:javax.ws.rs-api:2.1.1"
 jayway-jsonpath = { module = "com.jayway.jsonpath:json-path", version.ref = "jayway-jsonpath" }
 jetbrains-annotations = { module = "org.jetbrains:annotations", version.ref = "jetbrains-annotations" }
-jquery = "org.webjars:jquery:4.0.0"
+jquery = "org.webjars:jquery:4.1.0"
 json4s-native-s213 = { module = "org.json4s:json4s-native_2.13", version.ref = "json4s" }
 json4s-native-s3 = { module = "org.json4s:json4s-native_3", version.ref = "json4s" }
 jspecify = { module = "org.jspecify:jspecify", version.ref = "jspecify" }
