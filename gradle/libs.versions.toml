@@ -252,7 +252,7 @@ kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", versi
 kxbmap-configs-s213 = { module = "com.github.kxbmap:configs_2.13", version.ref = "configs" }
 logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
 lombok = { module = "org.projectlombok:lombok", version.ref = "lombok" }
-magnum-s3 = "com.augustnagro:magnum_3:1.3.1"
+magnum-s3 = "com.augustnagro:magnum_3:2.0.0"
 manifold-ext = { module = "systems.manifold:manifold-ext", version.ref = "manifold" }
 manifold-ext-rt = { module = "systems.manifold:manifold-ext-rt", version.ref = "manifold" }
 me-atrox-haikunator-haikunator = { module = "me.atrox.haikunator:Haikunator", version.ref = "me-atrox-haikunator-haikunator" }
